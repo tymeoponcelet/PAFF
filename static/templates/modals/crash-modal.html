@@ -1,0 +1,53 @@
+<div class="modal-overlay" id="crashModal" role="dialog" aria-modal="true" aria-labelledby="crashModalTitle">
+  <div class="modal modal--crash">
+    <div class="modal__header">
+      <h2 class="modal__title" id="crashModalTitle">🚀 Crash</h2>
+      <button class="modal__close js-close-crash" aria-label="Fermer la modale">×</button>
+    </div>
+    <div class="modal__body modal__body--crash">
+      <div class="crash-layout">
+
+        <!-- Canvas -->
+        <div class="crash-graph-col">
+          <canvas id="crashCanvas"></canvas>
+        </div>
+
+        <!-- Multiplicateur caché (requis par le JS) -->
+        <span id="crashMultiplier" style="display:none;">1.00x</span>
+
+        <!-- Mise + infos sur une ligne -->
+        <div class="crash-row">
+          <div class="crash-field">
+            <label class="crash-label" for="crashBetAmount">Mise</label>
+            <div class="crash-input-row">
+              <input id="crashBetAmount" type="number" class="crash-input" value="100" min="50" max="5000" step="50"
+                aria-label="Montant de la mise en points">
+              <span class="crash-unit">pts</span>
+            </div>
+          </div>
+          <div class="crash-info-grid">
+            <div class="crash-info-cell">
+              <span class="crash-info-label">Mise</span>
+              <span id="crashBetDisplay" class="crash-info-value">100 pts</span>
+            </div>
+            <div class="crash-info-cell">
+              <span class="crash-info-label">Gain potentiel</span>
+              <span id="crashPotentialGain" class="crash-info-value">100 pts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boutons -->
+        <div class="crash-btns">
+          <button id="crashStartBtn" class="crash-btn crash-btn--primary">🚀 Miser</button>
+          <button id="crashCashOutBtn" class="crash-btn crash-btn--cashout" disabled>💰 Encaisser</button>
+          <button id="crashResetBtn" class="crash-btn crash-btn--ghost" disabled>↺ Nouvelle</button>
+        </div>
+
+        <!-- Statut / résultat -->
+        <div id="crashStatus" class="crash-status">En attente…</div>
+        <div id="crashResult" class="crash-result" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+</div>

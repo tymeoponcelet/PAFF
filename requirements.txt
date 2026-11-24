@@ -1,0 +1,24 @@
+# ============================================================================
+# FICHIER DE DOCUMENTATION - PRÉREQUIS ET INSTALLATION
+# ============================================================================
+#
+# ATTENTION: Ce fichier ne s'installe pas directement.
+# Pour installer automatiquement toutes les dépendances, utilisez :
+#
+#   Windows:     install.bat
+#   Linux/Mac:   bash install.sh  ou  chmod +x install.sh && ./install.sh
+#
+# ============================================================================
+# PRÉREQUIS SYSTÈME
+# ============================================================================
+
+# Node.js
+# Version requise : 24.11.1
+# Pour installer Node.js 24.11.1 :
+#   - Avec nvm (recommandé) :
+#       nvm install 24.11.1
+#       nvm use 24.11.1
+#   - Ou téléchargez depuis : https://nodejs.org/
+#
+# Dépendances Node.js : gérées par package.json
+#   Installation : npm install

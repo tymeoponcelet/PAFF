@@ -1,0 +1,100 @@
+<!-- =============================================
+     HI-LOW MODAL
+     Usage : même système que blackjackModal
+     Ajouter <script src="/js/hilow-client.js"></script>
+     et enregistrer la route /actions/hilow dans app.js
+     ============================================= -->
+
+<div class="modal-overlay" id="hilowModal" role="dialog" aria-modal="true" aria-labelledby="hilowModalTitle">
+  <div class="modal">
+    <div class="modal__header">
+      <h2 class="modal__title" id="hilowModalTitle">🃏 Hi-Low</h2>
+      <button class="modal__close js-close-modal" aria-label="Fermer la modale">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="hilow">
+
+        <!-- Mise -->
+        <div class="blackjack__bet-area">
+          <label class="blackjack__bet-label" for="hilowBetAmount">Mise :</label>
+          <input type="number" id="hilowBetAmount" class="blackjack__bet-input"
+            value="100" min="50" max="5000" step="50" aria-label="Montant de la mise en points" />
+          <span class="blackjack__bet-label">pts</span>
+        </div>
+
+        <!-- Explication des règles -->
+        <p class="hilow__rules">
+          🃏 Devinez si la prochaine carte sera <strong>plus haute</strong>, <strong>plus basse</strong> ou <strong>égale</strong>.<br>
+          Encaissez à tout moment pour sécuriser vos gains. Plus vous continuez, plus vous multipliez !
+        </p>
+
+        <!-- Table de jeu -->
+        <div class="hilow__table">
+
+          <!-- Carte actuelle -->
+          <div class="hilow__card-zone">
+            <div class="hilow__card-label">Carte actuelle</div>
+            <div class="hilow__card-area" id="hilowCurrentCard">
+              <div class="hilow__card-placeholder">🂠</div>
+            </div>
+          </div>
+
+          <!-- Indicateur central -->
+          <div class="hilow__vs">
+            <div class="hilow__vs-icon" id="hilowVsIcon">VS</div>
+          </div>
+
+          <!-- Prochaine carte -->
+          <div class="hilow__card-zone">
+            <div class="hilow__card-label">Prochaine carte</div>
+            <div class="hilow__card-area" id="hilowNextCard">
+              <div class="hilow__card-placeholder">?</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Streak & Gain en attente -->
+        <div class="hilow__stats">
+          <div class="hilow__stat">
+            <span class="hilow__stat-label">🔥 Streak</span>
+            <span class="hilow__streak-value" id="hilowStreak">—</span>
+          </div>
+          <div class="hilow__stat">
+            <span class="hilow__stat-label">💰 Gain potentiel</span>
+            <span class="hilow__gain-value" id="hilowPendingGain">—</span>
+          </div>
+        </div>
+
+        <!-- Message de statut -->
+        <div class="hilow__status" id="hilowStatus">💡 Pariez sur la prochaine carte !</div>
+
+        <!-- Boutons de devinette (masqués au départ) -->
+        <div class="hilow__guess-buttons" id="hilowGuessButtons" style="display:none;">
+          <button class="blackjack__btn hilow__btn--lower" id="hilowLowerBtn">
+            ⬇️ Plus basse
+          </button>
+          <button class="blackjack__btn hilow__btn--equal" id="hilowEqualBtn">
+            ✌️ Égale <span class="hilow__odds-badge">×5</span>
+          </button>
+          <button class="blackjack__btn hilow__btn--higher" id="hilowHigherBtn">
+            ⬆️ Plus haute
+          </button>
+        </div>
+
+        <!-- Bouton encaisser (masqué au départ) -->
+        <div class="hilow__cashout-area">
+          <button class="blackjack__btn hilow__btn--cashout" id="hilowCashoutBtn" style="display:none;">
+            💸 Encaisser
+          </button>
+        </div>
+
+        <!-- Boutons principaux -->
+        <div class="blackjack__controls">
+          <button class="blackjack__btn blackjack__btn--primary" id="hilowDealBtn">Distribuer</button>
+          <button class="blackjack__btn blackjack__btn--ghost" id="hilowResetBtn" disabled>Nouvelle partie</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

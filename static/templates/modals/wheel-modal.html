@@ -1,0 +1,22 @@
+<div class="modal-overlay" id="wheelResultModal" role="dialog" aria-modal="true" aria-labelledby="wheelResultTitle">
+  <div class="modal">
+    <div class="modal__header">
+      <h2 class="modal__title" id="wheelResultTitle">🎰 Résultat de la Roue</h2>
+      <button class="modal__close js-close-wheel-result" aria-label="Fermer">×</button>
+    </div>
+    <div class="modal__body" style="text-align: center; padding: var(--space-4);">
+      <div style="font-size: 5rem; margin-bottom: var(--space-3);">🎉</div>
+      <h3 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-2);">Félicitations !</h3>
+      <p id="wheelResultMessage" style="color: var(--text-secondary); margin-bottom: var(--space-3);">
+        Vous avez gagné :
+      </p>
+      <div
+        id="wheelResultPoints" style="font-family: 'Orbitron', sans-serif; font-size: var(--font-size-3xl); color: var(--primary-green); font-weight: 900; margin-bottom: var(--space-3);">
+      </div>
+      <p id="wheelResultDay" style="color: var(--text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--space-3);">
+        Jour 1/7 • 6 jours restants
+      </p>
+      <button class="daily-bonus__button js-close-wheel-result">Super !</button>
+    </div>
+  </div>
+</div>

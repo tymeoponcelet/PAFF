@@ -1,0 +1,93 @@
+<div
+  class="modal-overlay"
+  id="rouletteModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="rouletteTitle"
+>
+  <div class="modal modal--wide">
+    <div class="modal__header">
+      <h2 class="modal__title" id="rouletteTitle">🎰 Roulette</h2>
+      <button class="modal__close js-close-modal" aria-label="Fermer la modale">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="roulette">
+ 
+        <!-- ROUE + RÉSULTAT -->
+        <div class="roulette__wheel-section">
+          <div class="roulette__wheel-container">
+            <!-- Pointeur -->
+            <div class="roulette__pointer"></div>
+            <!-- Roue -->
+            <svg id="rouletteWheelInner" class="roulette__wheel-svg" viewBox="-120 -120 240 240"></svg>
+            <!-- Balle -->
+            <div class="roulette__ball-track">
+              <div class="roulette__ball-wrapper" id="rouletteBallWrapper">
+                <div class="roulette__ball" id="rouletteBall"></div>
+              </div>
+            </div>
+            <!-- Centre -->
+            <div class="roulette__wheel-center">
+              <span class="roulette__result-number" id="rouletteResultNumber">?</span>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- PANNEAU DE MISES -->
+        <div class="roulette__betting-panel">
+ 
+          <!-- Sélection des jetons -->
+          <div class="roulette__chips-section">
+            <p class="roulette__section-label">💰 Valeur du jeton</p>
+            <div class="roulette__chips">
+              <button type="button" class="roulette__chip roulette__chip--10"  data-value="10">10</button>
+              <button type="button" class="roulette__chip roulette__chip--25"  data-value="25">25</button>
+              <button type="button" class="roulette__chip roulette__chip--50"  data-value="50">50</button>
+              <button type="button" class="roulette__chip roulette__chip--100" data-value="100">100</button>
+              <button type="button" class="roulette__chip roulette__chip--200" data-value="200">200</button>
+              <button type="button" class="roulette__chip roulette__chip--500" data-value="500">500</button>
+            </div>
+          </div>
+ 
+          <!-- Mises simples : couleur + parité -->
+          <div class="roulette__simple-bets">
+            <p class="roulette__section-label">🎲 Mises simples (x2)</p>
+            <div class="roulette__simple-grid">
+              <button type="button" class="roulette__simple-btn roulette__simple-btn--red"   id="rouletteBetRed">🔴 Rouge</button>
+              <button type="button" class="roulette__simple-btn roulette__simple-btn--black" id="rouletteBetBlack">⚫ Noir</button>
+              <button type="button" class="roulette__simple-btn roulette__simple-btn--even"  id="rouletteBetEven">2️⃣ Pair</button>
+              <button type="button" class="roulette__simple-btn roulette__simple-btn--odd"   id="rouletteBetOdd">1️⃣ Impair</button>
+            </div>
+          </div>
+ 
+          <!-- Grille numéros + douzaines -->
+          <div class="roulette__grid-section">
+            <p class="roulette__section-label">🎯 Plein (x36) &amp; Douzaines (x3)</p>
+            <div class="roulette__number-grid" id="rouletteNumberGrid">
+              <!-- Rempli dynamiquement par JS -->
+            </div>
+          </div>
+ 
+          <!-- Mises actives -->
+          <div class="roulette__active-bets">
+            <p class="roulette__section-label">📋 Mises placées — Total : <strong id="rouletteTotalBet">0 pts</strong></p>
+            <div class="roulette__bets-list" id="rouletteBetsList">
+              <p class="roulette__no-bets">Aucune mise placée</p>
+            </div>
+          </div>
+ 
+          <!-- Actions -->
+          <div class="roulette__actions">
+            <button type="button" class="mastermind__btn mastermind__btn--primary" id="rouletteSpinBtn" disabled>
+              🎰 Lancer
+            </button>
+            <button type="button" class="mastermind__btn mastermind__btn--secondary" id="rouletteClearBtn">
+              🗑️ Effacer
+            </button>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div id="flappyResultOverlay" class="flappy-result-overlay">
+  <div class="flappy-result-popup">
+
+    <!-- Particules de fond -->
+    <div class="flappy-particles" id="flappyParticles"></div>
+
+    <!-- Header avec icône animée -->
+    <div class="flappy-result-header">
+      <div class="flappy-result-bird" id="flappyResultBird">🐦</div>
+      <div class="flappy-result-pipes">
+        <div class="flappy-pipe flappy-pipe--top"></div>
+        <div class="flappy-pipe flappy-pipe--bottom"></div>
+      </div>
+    </div>
+
+    <!-- Titre résultat -->
+    <div class="flappy-result-title" id="flappyResultTitle">GAME OVER</div>
+    <div class="flappy-result-subtitle" id="flappyResultSubtitle">Vous avez heurté un tuyau !</div>
+
+    <!-- Stats -->
+    <div class="flappy-result-stats">
+      <div class="flappy-stat">
+        <div class="flappy-stat__icon">🎯</div>
+        <div class="flappy-stat__value" id="flappyStatScore">0</div>
+        <div class="flappy-stat__label">Score</div>
+      </div>
+      <div class="flappy-stat flappy-stat--highlight" id="flappyStatRecompenseWrap">
+        <div class="flappy-stat__icon">💰</div>
+        <div class="flappy-stat__value" id="flappyStatRecompense">+0 pts</div>
+        <div class="flappy-stat__label">Récompense</div>
+      </div>
+      <div class="flappy-stat">
+        <div class="flappy-stat__icon">🏆</div>
+        <div class="flappy-stat__value" id="flappyStatBest">0</div>
+        <div class="flappy-stat__label">Meilleur</div>
+      </div>
+    </div>
+
+    <!-- Mise info -->
+    <div class="flappy-result-bet" id="flappyResultBetInfo"></div>
+
+    <!-- Nouveau record -->
+    <div class="flappy-result-record" id="flappyResultRecord">
+      <span>🌟 NOUVEAU RECORD !</span>
+    </div>
+
+    <!-- Boutons -->
+    <div class="flappy-result-actions">
+      <button class="flappy-btn flappy-btn--replay" id="flappyResultReplay">
+        <span>↻</span> Rejouer
+      </button>
+      <button class="flappy-btn flappy-btn--close" id="flappyResultClose">
+        Fermer
+      </button>
+    </div>
+
+  </div>
+</div>
+

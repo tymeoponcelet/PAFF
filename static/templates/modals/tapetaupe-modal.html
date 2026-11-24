@@ -1,0 +1,131 @@
+<div class="modal-overlay" id="modal-tapetaupe">
+  <div class="modal">
+    <div class="modal__header">
+      <h2 class="modal__title">🔨 Tape-Taupes</h2>
+      <button class="modal__close" aria-label="Fermer">×</button>
+    </div>
+
+    <div class="modal__bodyTapeTaupe">
+      <!-- Stats du jeu -->
+      <div class="game-stats">
+        <div class="stat-item">
+          <span class="stat-label">Score:</span>
+          <span class="stat-value" id="whack-score">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Temps:</span>
+          <span class="stat-value" id="whack-timer">30</span>s
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">Mise:</span>
+          <span class="stat-value" id="whack-bet">0</span>
+        </div>
+      </div>
+
+      <!-- Zone de mise simplifiée -->
+<div class="bet-section" id="whack-bet-section">
+  <h3>Placer votre mise</h3>
+  <p class="bet-description">Misez entre 50 et 300 points et tapez des taupes pendant 30 secondes !</p>
+
+  <div class="bet-input-group">
+    <button class="bet-btn bet-btn--minus" data-amount="-50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+    </button>
+    <input type="number" id="whack-bet-input" min="50" max="300" step="50" value="50" />
+    <button class="bet-btn bet-btn--plus" data-amount="+50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div class="bet-presets">
+    <button class="preset-btn" data-amount="50">50</button>
+    <button class="preset-btn" data-amount="100">100</button>
+    <button class="preset-btn" data-amount="200">200</button>
+    <button class="preset-btn" data-amount="300">300</button>
+  </div>
+</div>
+
+
+      <!-- Grille de jeu -->
+      <div class="whack-game" id="whack-game">
+        <div class="whack-grid">
+          <div class="whack-hole" data-hole="0">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+          <div class="whack-hole" data-hole="1">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+          <div class="whack-hole" data-hole="2">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+          <div class="whack-hole" data-hole="3">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+          <div class="whack-hole" data-hole="4">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+          <div class="whack-hole" data-hole="5">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+          <div class="whack-hole" data-hole="6">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+          <div class="whack-hole" data-hole="7">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+          <div class="whack-hole" data-hole="8">
+            <div class="mole"></div>
+            <div class="hole-shadow"></div>
+          </div>
+        </div>
+
+        <div class="combo-display" id="combo-display" style="display: none;">
+          Combo x<span id="combo-value">0</span> 🔥
+        </div>
+      </div>
+
+      <!-- Écran de fin -->
+      <div class="game-end" id="whack-end" style="display: none;">
+        <div class="end-card">
+          <h3 id="end-title">Partie terminée !</h3>
+          <div class="end-stats">
+            <div class="end-stat">
+              <span class="end-label">Score final:</span>
+              <span class="end-value" id="end-score">0</span>
+            </div>
+            <div class="end-stat">
+              <span class="end-label">Mise initiale:</span>
+              <span class="end-value" id="end-bet-end">0</span>
+            </div>
+            <div class="end-stat large">
+              <span class="end-label">Gain/Perte:</span>
+              <span class="end-value" id="end-result">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal__footer">
+      <button class="btn btn--primary" id="whack-start-btn">
+        <span>Commencer la partie</span>
+      </button>
+      <button class="btn btn--primary" id="whack-restart-btn" style="display: none;">
+        <span>Rejouer</span>
+      </button>
+    </div>
+  </div>
+</div>

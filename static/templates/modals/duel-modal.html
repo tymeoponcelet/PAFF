@@ -1,0 +1,78 @@
+<div class="modal-overlay" id="duelModal" role="dialog" aria-modal="true" aria-labelledby="duelModalTitle">
+  <div class="modal modal--duel">
+    <div class="modal__header">
+      <h2 class="modal__title" id="duelModalTitle">⚔️ Duels 1 contre 1</h2>
+      <button class="modal__close js-close-duel" aria-label="Fermer les duels">×</button>
+    </div>
+
+    <div class="modal__body duel">
+
+      <!-- Lancer un duel -->
+      <section class="duel__bloc">
+        <h3 class="duel__titre">Lancer un duel</h3>
+        <div class="duel__ligne">
+          <label class="duel__label" for="duelJeu">Jeu</label>
+          <select class="duel__champ" id="duelJeu">
+            <option value="quiz">Quiz</option>
+            <option value="flappy">Flappy Bird</option>
+            <option value="tapetaupe">Tape-Taupe</option>
+          </select>
+        </div>
+
+        <form class="duel__ligne" id="duelFormDefi" autocomplete="off">
+          <label class="duel__label" for="duelPseudo">Défier</label>
+          <input class="duel__champ" id="duelPseudo" type="text" maxlength="15"
+            placeholder="Pseudo du joueur" required>
+          <button class="duel__bouton" type="submit">Envoyer le défi</button>
+        </form>
+
+        <div class="duel__ligne duel__ligne--ou">
+          <span>ou</span>
+          <button class="duel__bouton duel__bouton--secondaire" type="button" id="duelFile">
+            🎲 Trouver un adversaire
+          </button>
+        </div>
+      </section>
+
+      <!-- Bilan -->
+      <div class="duel__bilan" id="duelBilan" aria-live="polite">
+        <span><strong id="duelVictoires">0</strong> victoire(s)</span>
+        <span><strong id="duelDefaites">0</strong> défaite(s)</span>
+        <span><strong id="duelEgalites">0</strong> égalité(s)</span>
+      </div>
+
+      <!-- Listes -->
+      <section class="duel__bloc">
+        <h3 class="duel__titre">Défis reçus</h3>
+        <ul class="duel__liste" id="duelRecus"></ul>
+      </section>
+
+      <section class="duel__bloc">
+        <h3 class="duel__titre">Duels en cours</h3>
+        <ul class="duel__liste" id="duelEnCours"></ul>
+      </section>
+
+      <section class="duel__bloc">
+        <h3 class="duel__titre">En attente d'un adversaire</h3>
+        <ul class="duel__liste" id="duelEnvoyes"></ul>
+      </section>
+
+      <section class="duel__bloc">
+        <h3 class="duel__titre">Derniers résultats</h3>
+        <ul class="duel__liste" id="duelTermines"></ul>
+      </section>
+
+      <!-- Règles -->
+      <details class="duel__regles">
+        <summary>Comment ça marche ?</summary>
+        <ul>
+          <li>Chaque joueur joue <strong>sa propre partie</strong> du même jeu, quand il veut : le meilleur score gagne.</li>
+          <li><strong>Une seule tentative</strong> par duel : une partie commencée compte, même si vous fermez la fenêtre.</li>
+          <li>Aucune mise : un duel ne fait ni gagner ni perdre de points, il compte pour votre bilan de duels.</li>
+          <li>Le score de l'adversaire reste caché tant que vous n'avez pas joué.</li>
+          <li>Un duel accepté se joue en 48 h ; une partie non jouée compte 0. Un défi non accepté expire après 7 jours.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</div>

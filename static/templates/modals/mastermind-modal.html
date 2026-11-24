@@ -1,0 +1,152 @@
+<div
+  class="modal-overlay"
+  id="mastermindModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="mastermindTitle"
+>
+  <div class="modal">
+    <div class="modal__header">
+      <h2 class="modal__title" id="mastermindTitle">⛏️ Mines</h2>
+      <button class="modal__close js-close-modal" aria-label="Fermer la modale">
+        ×
+      </button>
+    </div>
+    <div class="modal__body">
+      <div class="mastermind">
+        <!-- ÉCRAN DE DÉMARRAGE -->
+        <div class="mastermind__start" id="mastermindStart">
+          <h3>⛏️ Révèle la mine sans exploser !</h3>
+
+          <div class="mastermind__rules">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem; color: #ffd700">
+              <strong
+                >Révèle des blocs pour faire monter le multiplicateur et
+                encaisse avant de toucher une mine.</strong
+              >
+            </p>
+
+            <div
+              style="
+                background: rgba(0, 0, 0, 0.2);
+                padding: 1rem;
+                border-radius: 8px;
+                margin-bottom: 1rem;
+              "
+            >
+              <p style="margin: 0.5rem 0">
+                💣 <strong>Mine</strong> = La partie s'arrête et tu perds ta
+                mise.
+              </p>
+              <p style="margin: 0.5rem 0">
+                ✨ <strong>Bloc sûr</strong> = Le multiplicateur augmente et ton
+                gain potentiel aussi.
+              </p>
+            </div>
+
+            <p style="text-align: center; color: #94a3b8; font-size: 0.95rem">
+              💰 Ta mise est de <strong>50 pts</strong>.<br />
+              Plus tu révèles de blocs sans mine, plus le multiplicateur grimpe
+              (jusqu'à ~x32).
+            </p>
+          </div>
+
+          <div class="mines__count-selector">
+            <label class="mines__count-label" for="mineCountInput">
+              💣 Nombre de mines
+            </label>
+            <div class="mines__count-control">
+              <button
+                class="mines__count-btn"
+                id="mineCountMinus"
+                type="button"
+              >
+                −
+              </button>
+              <span class="mines__count-value" id="mineCountDisplay">5</span>
+              <button class="mines__count-btn" id="mineCountPlus" type="button">
+                +
+              </button>
+              <input type="hidden" id="mineCountInput" value="5" />
+            </div>
+            <p class="mines__count-hint">
+              Entre 1 et 24 mines · Plus il y en a, plus le multiplicateur monte
+              vite
+            </p>
+          </div>
+
+          <button
+            class="mastermind__btn mastermind__btn--primary"
+            id="startMastermindBtn"
+          >
+            Jouer (50 pts)
+          </button>
+        </div>
+
+        <!-- ÉCRAN DE JEU -->
+        <div class="mastermind__game" id="mastermindGame">
+          <!-- Statistiques Mines -->
+          <div class="mastermind__secret">
+            <h4>📊 Statut de la mine</h4>
+            <div class="mines__stats">
+              <div class="mines__stat-item">
+                <span class="mines__stat-label">Mise</span>
+                <span class="mines__stat-value" id="minesBet">50 pts</span>
+              </div>
+              <div class="mines__stat-item">
+                <span class="mines__stat-label">Multiplicateur</span>
+                <span class="mines__stat-value" id="minesMultiplier"
+                  >x1.00</span
+                >
+              </div>
+              <div class="mines__stat-item">
+                <span class="mines__stat-label">Gain potentiel</span>
+                <span class="mines__stat-value" id="minesPotentialWin"
+                  >0 pts</span
+                >
+              </div>
+              <div class="mines__stat-item">
+                <span class="mines__stat-label">Cases sûres</span>
+                <span class="mines__stat-value" id="minesRevealed">0/0</span>
+              </div>
+              <div class="mines__stat-item">
+                <span class="mines__stat-label">Mines</span>
+                <span class="mines__stat-value" id="minesMines"
+                  >0 mines cachées</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Grille Mines -->
+          <div class="mastermind__board" id="mastermindBoard">
+            <!-- Grille remplie dynamiquement par JS -->
+          </div>
+
+          <!-- Contrôles -->
+          <div class="mastermind__controls">
+            <button
+              class="mastermind__btn mastermind__btn--primary"
+              id="submitGuessBtn"
+              disabled
+            >
+              Encaisser
+            </button>
+            <button
+              class="mastermind__btn mastermind__btn--secondary"
+              id="clearGuessBtn"
+            >
+              Effacer
+            </button>
+            <button
+              class="mastermind__btn mastermind__btn--danger"
+              id="forfeitBtn"
+            >
+              Abandonner
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

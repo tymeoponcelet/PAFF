@@ -1,0 +1,75 @@
+<div class="modal-overlay" id="plinkoModal" role="dialog" aria-modal="true" aria-labelledby="plinkoModalTitle">
+  <div class="modal plinko-modal">
+    <div class="modal__header">
+      <h2 class="modal__title" id="plinkoModalTitle">🎯 Plinko</h2>
+      <button class="modal__close js-close-plinko-modal" aria-label="Fermer">×</button>
+    </div>
+    <div class="modal__body">
+
+      <div class="plinko-layout">
+
+        <!-- Panneau gauche : contrôles -->
+        <div class="plinko-controls">
+
+          <div class="plinko-control-group">
+            <label class="plinko-label">💰 Mise par boule</label>
+            <div class="plinko-input-group">
+              <button class="plinko-btn-adjust" id="decreaseBet">-</button>
+              <input type="number" id="plinkoBetAmount" class="plinko-input" value="100" min="100" max="1000" step="50">
+              <button class="plinko-btn-adjust" id="increaseBet">+</button>
+            </div>
+          </div>
+
+          <div class="plinko-control-group">
+            <label class="plinko-label">🎱 Nombre de boules</label>
+            <div class="plinko-input-group">
+              <button class="plinko-btn-adjust" id="decreaseBalls">-</button>
+              <input type="number" id="ballCount" class="plinko-input" value="1" min="1" max="10" step="1">
+              <button class="plinko-btn-adjust" id="increaseBalls">+</button>
+            </div>
+          </div>
+
+          <div class="plinko-control-group">
+            <label class="plinko-label">📊 Lignes</label>
+            <select id="rowCount" class="plinko-select">
+              <option value="8">8 lignes (facile)</option>
+              <option value="12" selected>12 lignes (moyen)</option>
+              <option value="16">16 lignes (difficile)</option>
+            </select>
+          </div>
+
+          <div class="plinko-stats">
+            <div class="plinko-stat">
+              <span class="plinko-stat-label">Solde</span>
+              <span class="plinko-stat-value" id="playerBalance">—</span>
+            </div>
+            <div class="plinko-stat">
+              <span class="plinko-stat-label">Mise totale</span>
+              <span class="plinko-stat-value" id="totalBet">100 pts</span>
+            </div>
+          </div>
+
+          <button class="plinko-play-btn" id="playPlinko">
+            ▶ Lancer les boules
+          </button>
+
+        </div>
+
+        <!-- Zone canvas -->
+        <div class="plinko-game-area">
+          <canvas id="plinkoCanvas"></canvas>
+        </div>
+
+      </div>
+
+      <!-- Historique pleine largeur -->
+      <div class="plinko-history">
+        <h3 class="plinko-history-title">📜 Derniers résultats</h3>
+        <div class="plinko-history-list" id="historyList">
+          <p class="plinko-history-empty">Aucune partie jouée</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

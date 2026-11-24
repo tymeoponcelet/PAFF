@@ -1,0 +1,83 @@
+<div class="modal-overlay" id="flappyModal" role="dialog" aria-modal="true" aria-labelledby="flappyModalTitle">
+  <div class="modal modal--flappy">
+
+    <div class="modal__header">
+      <h2 class="modal__title" id="flappyModalTitle">🐦 Flappy Bird</h2>
+      <button class="modal__close js-close-flappy" aria-label="Fermer la modale">×</button>
+    </div>
+
+    <div class="modal__body">
+
+      <!-- ── Zone de mise (visible avant de jouer) ── -->
+      <div class="flappy-bet-zone" id="flappyBetZone">
+        <div class="flappy-bet-zone__inner">
+          <label class="flappy-bet-label" for="flappyBetInput">
+            💰 Mise (min. 10 pts)
+          </label>
+          <div class="flappy-bet-controls">
+            <button class="flappy-bet-btn" id="flappyBetMinus">−</button>
+            <input
+              class="flappy-bet-input"
+              id="flappyBetInput"
+              type="number"
+              min="10"
+              max="500"
+              value="50"
+            />
+            <button class="flappy-bet-btn" id="flappyBetPlus">+</button>
+          </div>
+          <div class="flappy-bet-presets">
+            <button class="flappy-preset-btn" data-amount="10">10</button>
+            <button class="flappy-preset-btn" data-amount="50">50</button>
+            <button class="flappy-preset-btn" data-amount="100">100</button>
+            <button class="flappy-preset-btn" data-amount="250">250</button>
+            <button class="flappy-preset-btn" data-amount="500">500</button>
+          </div>
+          <div class="flappy-bet-info">
+            <span>Récompense = mise × multiplicateur de palier</span>
+          </div>
+          <div class="flappy-paliers">
+            <div class="flappy-palier">
+              <span class="flappy-palier__score">5–19 pts</span>
+              <span class="flappy-palier__mult">×0</span>
+            </div>
+            <div class="flappy-palier">
+              <span class="flappy-palier__score">20–29 pts</span>
+              <span class="flappy-palier__mult">×1</span>
+            </div>
+            <div class="flappy-palier">
+              <span class="flappy-palier__score">30–49 pts</span>
+              <span class="flappy-palier__mult">×2</span>
+            </div>
+            <div class="flappy-palier">
+              <span class="flappy-palier__score">50–59 pts</span>
+              <span class="flappy-palier__mult">×3</span>
+            </div>
+            <div class="flappy-palier">
+              <span class="flappy-palier__score">60–69 pts</span>
+              <span class="flappy-palier__mult">×5</span>
+            </div>
+            <div class="flappy-palier">
+              <span class="flappy-palier__score">70–79 pts</span>
+              <span class="flappy-palier__mult">×10</span>
+            </div>
+            <div class="flappy-palier flappy-palier--top">
+              <span class="flappy-palier__score">80+ pts</span>
+              <span class="flappy-palier__mult">×20</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Canvas ── -->
+      <div class="flappy-game">
+        <canvas id="flappyCanvas" width="320" height="480"></canvas>
+        <div class="flappy-game__instructions">
+          <p>🎮 Cliquez ou appuyez sur Espace pour faire voler l'oiseau</p>
+          <p>🏆 Évitez les tuyaux et obtenez le meilleur score !</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

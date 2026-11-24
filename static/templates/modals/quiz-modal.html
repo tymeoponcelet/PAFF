@@ -1,0 +1,57 @@
+<div class="modal-overlay" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizModalTitle">
+  <div class="modal modal--quiz">
+    <div class="modal__header">
+      <h2 class="modal__title" id="quizModalTitle">🧠 Quiz</h2>
+      <button class="modal__close js-close-quiz" aria-label="Fermer le quiz">×</button>
+    </div>
+
+    <div class="modal__body quiz">
+
+      <!-- Écran d'accueil -->
+      <section class="quiz__ecran" id="quizAccueil">
+        <p class="quiz__intro" id="quizIntro">
+          10 questions, 20 secondes par question. Plus vous répondez vite, plus vous marquez de points de score.
+          Chaque bonne réponse rapporte <strong>10 pts</strong>.
+        </p>
+        <div class="quiz__theme-choix" id="quizThemeChoix">
+          <label for="quizTheme">Thème</label>
+          <select class="duel__champ" id="quizTheme">
+            <option value="">Tous les thèmes</option>
+          </select>
+        </div>
+        <button class="duel__bouton quiz__grand-bouton" type="button" id="quizCommencer">Commencer</button>
+      </section>
+
+      <!-- Une question -->
+      <section class="quiz__ecran" id="quizJeu" hidden>
+        <div class="quiz__entete">
+          <span>Question <strong id="quizNumero">1</strong> / <span id="quizTotal">10</span></span>
+          <span class="quiz__theme" id="quizThemeQuestion"></span>
+          <span>Score : <strong id="quizScore">0</strong></span>
+        </div>
+
+        <div class="quiz__chrono" role="timer" aria-live="off">
+          <div class="quiz__chrono-barre" id="quizChronoBarre"></div>
+        </div>
+        <p class="quiz__secondes"><span id="quizSecondes">20</span> s</p>
+
+        <h3 class="quiz__question" id="quizQuestion"></h3>
+        <div class="quiz__choix" id="quizChoix"></div>
+
+        <div class="quiz__retour" id="quizRetour" aria-live="polite" hidden>
+          <p class="quiz__verdict" id="quizVerdict"></p>
+          <p class="quiz__explication" id="quizExplication"></p>
+          <button class="duel__bouton" type="button" id="quizSuivant">Question suivante</button>
+        </div>
+      </section>
+
+      <!-- Fin de partie -->
+      <section class="quiz__ecran quiz__fin" id="quizFin" hidden>
+        <h3 class="quiz__fin-titre" id="quizFinTitre">Partie terminée !</h3>
+        <p class="quiz__fin-score"><strong id="quizFinBonnes">0</strong> bonnes réponses sur <span id="quizFinTotal">10</span></p>
+        <p class="quiz__fin-detail" id="quizFinDetail"></p>
+        <button class="duel__bouton quiz__grand-bouton" type="button" id="quizRejouer">Rejouer</button>
+      </section>
+    </div>
+  </div>
+</div>

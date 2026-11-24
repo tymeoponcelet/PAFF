@@ -1,0 +1,372 @@
+/* ========================================
+   PLINKO — Design premium
+   ======================================== */
+
+/* ── Modal ── */
+.plinko-modal {
+  width: 95%;
+  max-width: 980px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: linear-gradient(160deg, #0d1428 0%, #080d1a 100%);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(74,158,255,0.08),
+    0 24px 80px rgba(0,0,0,0.8),
+    0 0 120px rgba(20,60,160,0.15);
+}
+
+/* ── Layout principal ── */
+.plinko-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.25rem;
+}
+
+/* ════════════════════════════════════════
+   PANNEAU CONTRÔLES
+   ════════════════════════════════════════ */
+.plinko-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 1.1rem;
+  position: sticky;
+  top: 0;
+}
+
+.plinko-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.plinko-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(140,165,200,0.75);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ── Groupe +/- input ── */
+.plinko-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.plinko-btn-adjust {
+  background: rgba(255,255,255,0.06);
+  border: none;
+  color: rgba(255,255,255,0.8);
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plinko-btn-adjust:hover {
+  background: #4a9eff;
+  color: #fff;
+}
+.plinko-btn-adjust:active {
+  background: #2277dd;
+}
+
+.plinko-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-width: 0;
+  outline: none;
+}
+/* Supprime les flèches navigateur */
+.plinko-input::-webkit-outer-spin-button,
+.plinko-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.plinko-input[type=number] { -moz-appearance: textfield; }
+
+/* ── Select lignes ── */
+.plinko-select {
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.09);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%238899aa'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  padding-right: 2rem;
+}
+.plinko-select:focus { border-color: #4a9eff; }
+
+/* ── Stats (solde / mise totale) ── */
+.plinko-stats {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.7rem 0.9rem;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+}
+
+.plinko-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.plinko-stat-label {
+  font-size: 0.65rem;
+  color: rgba(136,153,170,0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.plinko-stat-value {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255,215,0,0.35);
+}
+
+/* ── Séparateur ── */
+.plinko-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  border: none;
+  margin: 0;
+}
+
+/* ── Bouton jouer ── */
+.plinko-play-btn {
+  position: relative;
+  background: linear-gradient(135deg, #4a9eff 0%, #0055cc 100%);
+  border: none;
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 11px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.12s, box-shadow 0.2s;
+  width: 100%;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 18px rgba(74,158,255,0.30);
+  overflow: hidden;
+}
+/* Reflet interne */
+.plinko-play-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 100%);
+  border-radius: 11px 11px 0 0;
+  pointer-events: none;
+}
+.plinko-play-btn:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(74,158,255,0.45);
+}
+.plinko-play-btn:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(74,158,255,0.25);
+}
+.plinko-play-btn:disabled {
+  opacity: 0.40;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Spinner dans le bouton */
+.plinko-btn-spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: plinko-spin 0.65s linear infinite;
+  vertical-align: middle;
+  margin-right: 7px;
+}
+@keyframes plinko-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ════════════════════════════════════════
+   ZONE CANVAS
+   ════════════════════════════════════════ */
+.plinko-game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+#plinkoCanvas {
+  display: block;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 8px 40px rgba(0,0,0,0.65),
+    0 0 80px rgba(20,70,200,0.12);
+  /* Rendu net en HD */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* ════════════════════════════════════════
+   HISTORIQUE
+   ════════════════════════════════════════ */
+.plinko-history {
+  width: 100%;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+}
+
+.plinko-history-title {
+  font-size: 0.75rem;
+  color: rgba(136,153,170,0.7);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.75rem;
+}
+
+.plinko-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 180px;
+  overflow-y: auto;
+  /* Scrollbar discrète */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.plinko-history-list::-webkit-scrollbar { width: 4px; }
+.plinko-history-list::-webkit-scrollbar-track { background: transparent; }
+.plinko-history-list::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}
+
+.plinko-history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.82rem;
+  /* Animation d'entrée gérée en JS */
+  transition: opacity 0.3s, transform 0.3s;
+}
+.plinko-history-item:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.phi-meta {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.78rem;
+}
+.phi-result {
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+}
+
+.plinko-history-multis {
+  flex: 1;
+  color: rgba(170,180,190,0.7);
+  font-size: 0.74rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0 0.5rem;
+}
+
+.plinko-history-profit {
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+
+.plinko-history-empty {
+  color: rgba(136,153,170,0.4);
+  font-size: 0.82rem;
+  text-align: center;
+  padding: 0.75rem 0;
+  margin: 0;
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════ */
+@media (max-width: 680px) {
+  .plinko-layout {
+    grid-template-columns: 1fr;
+    padding: 0.9rem;
+    gap: 1rem;
+  }
+
+  .plinko-controls {
+    position: static;
+    /* Horizontal sur mobile */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Le bouton jouer prend toute la largeur */
+  .plinko-play-btn,
+  .plinko-stats,
+  .plinko-divider {
+    grid-column: 1 / -1;
+  }
+
+  .plinko-modal {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .plinko-controls {
+    grid-template-columns: 1fr;
+  }
+}

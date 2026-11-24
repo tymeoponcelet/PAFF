@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion / Inscription - P.A.F.F.</title>
+
+    <!-- Favico -->
+    <link rel="icon" href="static/img/Icon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="static/css/login.css">
+</head>
+<!-- Popup standard -->
+<div id="popup-overlay" class="popup-overlay">
+    <div class="popup-box" id="popup-box">
+        <h3 id="popup-title">Message</h3>
+        <p id="popup-text">Texte</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+</div>
+
+<!-- Modale pour le code -->
+<div id="code-modal" class="code-modal">
+    <div class="code-modal__content">
+        <div class="code-modal__header">
+            <h2 class="code-modal__title">📧 Code de vérification</h2>
+            <p class="code-modal__subtitle">
+                Un code a été envoyé à<br>
+                <span class="code-modal__email" id="modal-email"></span>
+            </p>
+            <p class="code-modal__timer" id="modal-timer">⏱️ Temps restant : 10:00</p>
+        </div>
+        <form id="code-form">
+            <input type="text" id="code-input" class="code-modal__input" placeholder="000000" maxlength="6"
+                pattern="[0-9]*" inputmode="numeric" required autocomplete="one-time-code">
+            <input type="password" id="new-password-input" class="code-modal__password"
+                placeholder="Nouveau mot de passe (8 caractères min.)" minlength="8" maxlength="72"
+                autocomplete="new-password" hidden>
+            <div class="code-modal__buttons">
+                <button type="button" class="code-modal__button code-modal__button--secondary"
+                    onclick="closeCodeModal()">
+                    Annuler
+                </button>
+                <button type="submit" class="code-modal__button code-modal__button--primary">
+                    Confirmer
+                </button>
+            </div>
+            <div id="code-loading" class="code-modal__loading">
+                <div class="spinner"></div>
+                <p>Vérification en cours...</p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<main class="login-container">
+    <h1>Se connecter ou créer un compte</h1>
+
+    <div class="forms-wrapper">
+        <!-- Création de compte -->
+        <section class="create-account">
+            <h2>Créer un compte</h2>
+            <form id="create-account-form">
+                <input type="text" name="pseudo" placeholder="Pseudo" required>
+                <input type="text" name="email" id="email-input-create" placeholder="Votre email" required>
+                <select name="classe" required>
+                    <option value="" disabled selected>Classe</option>
+                    <option value="ASS1">ASS1</option>
+                    <option value="ASS2">ASS2</option>
+                    <option value="CG1">CG1</option>
+                    <option value="CG2">CG2</option>
+                    <option value="MCO1">MCO1</option>
+                    <option value="MCO2">MCO2</option>
+                    <option value="SIO1">SIO1</option>
+                    <option value="SIO2">SIO2</option>
+                    <option value="DCG1">DCG1</option>
+                    <option value="DCG2">DCG2</option>
+                    <option value="DCG3">DCG3</option>
+                    <option value="PECT1">PECT1</option>
+                    <option value="PECT2">PECT2</option>
+                    <option value="NDRC1">NDRC1</option>
+                    <option value="NDRC2">NDRC2</option>
+                    <option value="BSI">BSI</option>
+                    <option value="MSI1">MSI1</option>
+                    <option value="MSI2">MSI2</option>
+                </select>
+                <input type="password" name="password" placeholder="Mot de passe (8 caractères min.)"
+                    minlength="8" maxlength="72" autocomplete="new-password" required>
+                <input type="password" name="passwordConfirm" placeholder="Confirmer le mot de passe"
+                    minlength="8" maxlength="72" autocomplete="new-password" required>
+                <label class="conditions-label">
+                    <input type="checkbox" name="conditions" required>
+                    <span>J'accepte les
+                        <a href="/static/templates/legal/termes-et-conditions.html" target="_blank" rel="noopener">conditions d'utilisation</a>,
+                        la <a href="/static/templates/legal/politique-de-confidentialite.html" target="_blank" rel="noopener">politique de confidentialité</a>
+                        et la charte de bonne conduite (respect des autres joueurs, pseudo correct, pas de triche).</span>
+                </label>
+                <button type="submit">Créer un compte</button>
+            </form>
+        </section>
+
+        <!-- Connexion -->
+        <section class="login">
+            <h2>Connexion</h2>
+            <form id="login-form">
+                <input type="text" id="email-input-login" name="email" placeholder="Votre email" autocomplete="username" required>
+                <input type="password" name="password" placeholder="Mot de passe" autocomplete="current-password" required>
+                <button type="submit">Se connecter</button>
+            </form>
+            <p style="font-size: 0.9rem; margin-top: 1rem; text-align: center;">
+                <a href="#" id="forgot-password-link" class="forgot-link">Mot de passe oublié ?</a>
+            </p>
+        </section>
+    </div>
+
+    <a href="index.html" class="login-back">Retour à l'accueil</a>
+</main>
+
+<script>
+    let currentEmail = '';
+    let countdownInterval = null;
+
+    const EMAIL_REGEX = /^[a-z]+\.[a-z0-9]+@lyceedelasalle\.fr$/i;
+    let codeMode = 'inscription'; // 'inscription' ou 'reinitialisation'
+
+    async function postJson(url, body) {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify(body)
+        });
+        try {
+            return await res.json();
+        } catch {
+            return { success: false, message: "Réponse inattendue du serveur." };
+        }
+    }
+
+    function connexionReussie(result) {
+        localStorage.setItem("user", JSON.stringify({
+            logged: true,
+            id: result.user.id,
+            pseudo: result.user.pseudo || result.user.username,
+            username: result.user.username || result.user.pseudo,
+            points: result.user.points,
+            classe: result.user.classe,
+            cles: result.user.cles != null ? result.user.cles : 0
+        }));
+        showPopup(`✅ ${result.message}`);
+        setTimeout(() => { window.location.href = "/"; }, 1500);
+    }
+
+    // ========================================
+    // CRÉATION DE COMPTE
+    // ========================================
+    document.getElementById("create-account-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const form = e.target;
+
+        if (form.password.value !== form.passwordConfirm.value) {
+            return showPopup("❌ Les deux mots de passe ne sont pas identiques.");
+        }
+
+        const data = {
+            pseudo: form.pseudo.value.trim(),
+            email: form.email.value,
+            classe: form.classe.value,
+            password: form.password.value,
+            accepteConditions: form.conditions.checked
+        };
+
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = '⏳ Création en cours...';
+
+        try {
+            const result = await postJson("/actions/create_account", data);
+            if (result.success) {
+                currentEmail = data.email;
+                openCodeModal(data.email, 'inscription');
+                form.reset();
+                setupEmailReset('email-input-create');
+            } else {
+                showPopup(result.message || "Erreur lors de la création du compte");
+            }
+        } catch (err) {
+            showPopup("❌ Erreur serveur : " + err.message);
+        } finally {
+            button.disabled = false;
+            button.textContent = originalText;
+        }
+    });
+
+    // ========================================
+    // CONNEXION : EMAIL + MOT DE PASSE
+    // ========================================
+    document.getElementById("login-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+
+        if (!EMAIL_REGEX.test(email)) {
+            return showPopup("❌ Email invalide.\n\nFormat attendu : nom.p@lyceedelasalle.fr");
+        }
+
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = '⏳ Connexion...';
+
+        try {
+            const result = await postJson("/actions/login", { email, password: form.password.value });
+            if (result.success) {
+                connexionReussie(result);
+            } else if (result.requiresVerification) {
+                currentEmail = email;
+                openCodeModal(email, 'inscription');
+            } else {
+                showPopup(result.message || "❌ Connexion impossible");
+            }
+        } catch (err) {
+            showPopup("❌ Erreur serveur : " + err.message);
+        } finally {
+            button.disabled = false;
+            button.textContent = originalText;
+        }
+    });
+
+    // ========================================
+    // MOT DE PASSE OUBLIÉ : DEMANDER UN CODE
+    // ========================================
+    document.getElementById("forgot-password-link").addEventListener("click", async function (e) {
+        e.preventDefault();
+        const email = document.getElementById('email-input-login').value;
+
+        if (!EMAIL_REGEX.test(email)) {
+            return showPopup("Saisissez d'abord votre email dans le formulaire de connexion, puis cliquez sur « Mot de passe oublié ».");
+        }
+
+        try {
+            const result = await postJson("/actions/request_code", { email });
+            if (result.success) {
+                currentEmail = email;
+                openCodeModal(email, 'reinitialisation');
+            } else {
+                showPopup(result.message || "Erreur lors de l'envoi du code");
+            }
+        } catch (err) {
+            showPopup("❌ Erreur serveur : " + err.message);
+        }
+    });
+
+    // ========================================
+    // SAISIE DU CODE REÇU PAR MAIL
+    // ========================================
+    document.getElementById("code-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const code = document.getElementById('code-input').value.trim();
+        const newPassword = document.getElementById('new-password-input').value;
+        const loading = document.getElementById('code-loading');
+
+        if (!code || code.length < 6) {
+            return showPopup("❌ Code invalide (6 chiffres requis)");
+        }
+        if (codeMode === 'reinitialisation' && newPassword.length < 8) {
+            return showPopup("❌ Le nouveau mot de passe doit contenir au moins 8 caractères.");
+        }
+
+        loading.classList.add('active');
+        try {
+            const result = codeMode === 'reinitialisation'
+                ? await postJson("/actions/reset_password", { email: currentEmail, code, password: newPassword })
+                : await postJson("/actions/verify_account", { email: currentEmail, code });
+
+            loading.classList.remove('active');
+            if (result.success) {
+                closeCodeModal();
+                connexionReussie(result);
+            } else {
+                // On laisse la fenêtre ouverte pour permettre un nouvel essai
+                showPopup(result.message || "❌ Code incorrect");
+            }
+        } catch (err) {
+            loading.classList.remove('active');
+            showPopup("❌ Erreur serveur : " + err.message);
+        }
+    });
+
+    // ========================================
+    // GESTION DES MODALES
+    // ========================================
+    function openCodeModal(email, mode) {
+        codeMode = mode;
+        const modal = document.getElementById('code-modal');
+        const codeInput = document.getElementById('code-input');
+        const passwordInput = document.getElementById('new-password-input');
+        const modalTitle = document.querySelector('.code-modal__title');
+        const modalSubtitle = document.querySelector('.code-modal__subtitle');
+
+        codeInput.value = '';
+        passwordInput.value = '';
+        passwordInput.hidden = mode !== 'reinitialisation';
+        passwordInput.required = mode === 'reinitialisation';
+
+        const emailSpan = document.createElement('span');
+        emailSpan.className = 'code-modal__email';
+        emailSpan.id = 'modal-email';
+        emailSpan.textContent = email;
+
+        if (mode === 'reinitialisation') {
+            modalTitle.textContent = '🔑 Nouveau mot de passe';
+            modalSubtitle.textContent = 'Si un compte existe, un code a été envoyé à';
+        } else {
+            modalTitle.textContent = '🎉 Vérifiez votre email';
+            modalSubtitle.textContent = 'Un code de vérification a été envoyé à';
+        }
+        modalSubtitle.appendChild(document.createElement('br'));
+        modalSubtitle.appendChild(emailSpan);
+
+        modal.classList.add('active');
+        startCountdown(600); // 10 minutes
+        setTimeout(() => codeInput.focus(), 100);
+    }
+
+    function closeCodeModal() {
+        const modal = document.getElementById('code-modal');
+        const loading = document.getElementById('code-loading');
+        modal.classList.remove('active');
+        loading.classList.remove('active');
+
+        // Arrêter le compte à rebours
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+        }
+    }
+
+    function startCountdown(seconds) {
+        const timerElement = document.getElementById('modal-timer');
+
+        // Arrêter le compte à rebours précédent s'il existe
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+        }
+
+        let remainingSeconds = seconds;
+
+        function updateTimer() {
+            const minutes = Math.floor(remainingSeconds / 60);
+            const secs = remainingSeconds % 60;
+            timerElement.textContent = `⏱️ Temps restant : ${minutes}:${secs.toString().padStart(2, '0')}`;
+
+            // Changer la couleur quand il reste moins de 2 minutes
+            if (remainingSeconds < 120) {
+                timerElement.style.color = '#ef4444';
+            } else {
+                timerElement.style.color = '#64748b';
+            }
+
+            if (remainingSeconds <= 0) {
+                clearInterval(countdownInterval);
+                closeCodeModal();
+                showPopup('⏰ Le code a expiré. Veuillez recommencer.');
+            }
+
+            remainingSeconds--;
+        }
+
+        updateTimer(); // Afficher immédiatement
+        countdownInterval = setInterval(updateTimer, 1000);
+    }
+
+    function showPopup(message) {
+        const overlay = document.getElementById("popup-overlay");
+        const title = document.getElementById("popup-title");
+        const text = document.getElementById("popup-text");
+
+        title.textContent = "Message";
+        text.textContent = message;
+        overlay.style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("popup-overlay").style.display = "none";
+    }
+
+    // ========================================
+    // AUTO-COMPLÉTION EMAIL @lyceedelasalle.fr
+    // ========================================
+    function setupEmailInput(inputId) {
+        const emailInput = document.getElementById(inputId);
+        if (!emailInput) {
+            //console.error('Input non trouvé:', inputId);
+            return;
+        }
+
+        const domain = "@lyceedelasalle.fr";
+        let isUpdating = false;
+
+        function formatEmail(value) {
+            let cleaned = value.split('@')[0];
+            cleaned = cleaned.replace(/\s/g, '');
+            cleaned = cleaned.replace(/[^a-zA-Z0-9.-]/g, '');
+            return cleaned + domain;
+        }
+
+        if (!emailInput.value || emailInput.value === '') {
+            emailInput.value = domain;
+        }
+
+        emailInput.addEventListener("focus", (e) => {
+            const value = emailInput.value;
+            const userPart = value.replace(domain, '');
+
+            if (userPart === '' || userPart === '@') {
+                setTimeout(() => {
+                    emailInput.setSelectionRange(0, 0);
+                }, 0);
+            }
+        });
+
+        emailInput.addEventListener("input", (e) => {
+            if (isUpdating) return;
+            isUpdating = true;
+
+            const cursorPos = e.target.selectionStart;
+            const oldValue = e.target.value;
+
+            let userPart = oldValue.split('@')[0];
+            userPart = userPart.replace(/\s/g, '');
+            userPart = userPart.replace(/[^a-zA-Z0-9.-]/g, '');
+
+            const newValue = userPart + domain;
+            emailInput.value = newValue;
+
+            const newCursorPos = Math.min(cursorPos, userPart.length);
+            emailInput.setSelectionRange(newCursorPos, newCursorPos);
+
+            isUpdating = false;
+        });
+
+        emailInput.addEventListener("keydown", (e) => {
+            const cursorPos = emailInput.selectionStart;
+            const value = emailInput.value;
+            const userPart = value.split('@')[0];
+
+            if (cursorPos > userPart.length) {
+                const allowedKeys = ["ArrowLeft", "Home", "Backspace"];
+
+                if (!allowedKeys.includes(e.key) && !e.ctrlKey && !e.metaKey) {
+                    e.preventDefault();
+                    emailInput.setSelectionRange(userPart.length, userPart.length);
+                }
+            }
+
+            if (e.key === '@') {
+                e.preventDefault();
+            }
+        });
+
+        emailInput.addEventListener("click", () => {
+            setTimeout(() => {
+                const cursorPos = emailInput.selectionStart;
+                const value = emailInput.value;
+                const userPart = value.split('@')[0];
+
+                if (cursorPos > userPart.length) {
+                    emailInput.setSelectionRange(userPart.length, userPart.length);
+                }
+            }, 0);
+        });
+
+        emailInput.addEventListener("paste", (e) => {
+            e.preventDefault();
+
+            const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+            const cleaned = pastedText.split('@')[0].replace(/[^a-zA-Z0-9.-]/g, '');
+
+            const cursorPos = emailInput.selectionStart;
+            const value = emailInput.value;
+            const userPart = value.split('@')[0];
+
+            const before = userPart.substring(0, cursorPos);
+            const after = userPart.substring(cursorPos);
+
+            emailInput.value = before + cleaned + after + domain;
+            emailInput.setSelectionRange(cursorPos + cleaned.length, cursorPos + cleaned.length);
+        });
+    }
+
+    // Après form.reset(), remettre le domaine dans le champ
+    function setupEmailReset(inputId) {
+        document.getElementById(inputId).value = "@lyceedelasalle.fr";
+    }
+
+    setupEmailInput('email-input-create');
+    setupEmailInput('email-input-login');
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeCodeModal();
+        }
+    });
+
+    document.getElementById('code-input').addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    });
+</script>
+</body>
+
+</html>

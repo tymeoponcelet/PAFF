@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0a0a0f">
+  <title>P.A.F.F. | Projet pédagogique BTS SIO</title>
+  <meta name="description" content="Site pédagogique de démonstration">
+
+  <!-- ANTI ZOOM sur bigo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/win.css">
+  <link rel="stylesheet" href="static/css/tape-taupe.css">
+  <link rel="stylesheet" href="static/css/plinko.css">
+  <link rel="stylesheet" href="static/css/mastermind.css">
+  <link rel="stylesheet" href="static/css/chest.css">
+  <link rel="stylesheet" href="static/css/flappy.css">
+  <link rel="stylesheet" href="static/css/patchnote.css">
+  <link rel="stylesheet" href="static/css/roulette.css">
+  <link rel="stylesheet" href="static/css/hi-low.css">
+  <link rel="stylesheet" href="static/css/scratch.css">
+  <link rel="stylesheet" href="static/css/timer.css">
+  <link rel="stylesheet" href="static/css/duel.css">
+  <link rel="stylesheet" href="static/css/quiz.css">
+
+  <!-- Favico -->
+  <link rel="icon" href="static/img/Icon.png" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Animated Background -->
+  <div class="animated-bg"></div>
+
+
+
+
+  <!-- ========================================
+       START SECTION: TOP BAR
+  ======================================== -->
+  <div class="top-bar" id="topBar">
+    ⚠️ Site pédagogique BTS SIO – Pour de l'aide sur l'addiction aux jeux, consultez
+    <a href="https://www.drogues.gouv.fr/lessentiel-sur-les-usages-problematiques-decrans"
+      class="responsible-gaming__link" target="_blank">nos ressources</a>.
+    <button class="top-bar__close" id="topBarClose" aria-label="Fermer la bannière">×</button>
+  </div>
+  <!-- END SECTION: TOP BAR -->
+
+  <!-- ========================================
+     START SECTION: NAVBAR
+======================================== -->
+  <nav class="navbar">
+    <!-- Brand & Logo -->
+    <div class="navbar__brand">
+      <a href="/index.html" class="navbar__logo" aria-label="Retour à l'accueil P.A.F.F.">
+        <picture>
+          <!-- Mobile -->
+          <source srcset="static/img/Icon.png" media="(max-width: 768px)">
+
+          <!-- Desktop (par défaut) -->
+          <img src="/static/img/Logo.png" alt="Description">
+        </picture>
+      </a>
+    </div>
+
+    <!-- Navigation Links -->
+    <ul class="navbar__nav">
+      <li><a href="#how">Comment jouer</a></li>
+      <li><a href="#tables">Jeux</a></li>
+      <li><a href="#" class="js-open-duel">Duels</a></li>
+      <li><a href="#leaderboard">Classement</a></li>
+      <li id="navCoffreLi" style="display: none;"><a href="#" class="js-open-chest" id="navCoffre">Coffre</a></li>
+      <li id="navAdminLi" style="display: none;"><a href="/admin.html">Administration</a></li>
+    </ul>
+
+    <!-- Actions (Balance + Auth) -->
+    <div class="navbar__actions">
+
+      <!-- Container Balance (visible uniquement si connecté) -->
+      <div class="navbar__balance-container" id="userBalanceContainer" style="display: none;">
+        <div class="navbar__balance-row">
+          <span class="navbar__balance" id="userBalance" aria-label="Solde de points fictifs">💎 5,000 pts</span>
+          <span id="userKeys" data-user-keys class="navbar__keys js-open-chest" style="display: none;"
+            aria-label="Clés - Ouvrir le coffre" title="Ouvrir le coffre">🔑 0</span>
+          <!-- Bouton Auth (connexion/déconnexion) -->
+          <button class="navbar__login" id="authButtonConnected" aria-label="Connexion">
+            <span id="user-pseudo" style="display: none;"></span>
+          </button>
+        </div>
+      </div>
+      <!-- Bouton Auth (connexion/déconnexion) -->
+      <button class="navbar__login2" id="authButtonLogin" aria-label="Connexion">
+        <a id="login-btn" href="/login.html">Se connecter</a>
+      </button>
+    </div>
+  </nav>
+  <!-- END SECTION: NAVBAR -->
+
+
+  <!-- ========================================
+       START SECTION: MOBILE MENU
+  ======================================== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu__close" id="menuClose" aria-label="Fermer le menu">
+      ×
+    </button>
+    <ul class="mobile-menu__nav">
+      <li><a href="#how">Comment jouer</a></li>
+      <li><a href="#tables">Jeux</a></li>
+      <li><a href="#" class="js-open-duel">Duels</a></li>
+      <li><a href="#leaderboard">Classement</a></li>
+      <li><a href="#" class="js-open-chest">Coffre</a></li>
+    </ul>
+  </div>
+  <!-- END SECTION: MOBILE MENU -->
+
+  <main>
+    <!-- ========================================
+         START SECTION: HERO
+    ======================================== -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero__title">Jeu d'arcade en ligne </h1>
+        <p class="hero__subtitle">
+          Essayer de gagner le plus de points possible afin d'être en haut du classement !
+        </p>
+      </div>
+    </section>
+    <!-- END SECTION: HERO -->
+
+    <!-- ========================================
+         START SECTION: HOW IT WORKS
+    ======================================== -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="how-it-works">
+          <h2 class="section__title text-center">📖 Comment ça marche</h2>
+          <div class="how-it-works__grid">
+            <div class="how-it-works__step">
+              <div class="how-it-works__icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+              <h3 class="how-it-works__title">1. Choisissez votre jeu</h3>
+              <p class="how-it-works__desc">Sélectionnez un jeu selon votre niveau et mise minimale</p>
+            </div>
+            <div class="how-it-works__step">
+              <div class="how-it-works__icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <h3 class="how-it-works__title">2. Placez votre mise</h3>
+              <p class="how-it-works__desc">Pariez vos points pour en gagner d'avantages</p>
+            </div>
+            <div class="how-it-works__step">
+              <div class="how-it-works__icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+              </div>
+              <h3 class="how-it-works__title">3. Jouez et gagnez</h3>
+              <p class="how-it-works__desc"> Le plus important c'est de gagner !</p>
+            </div>
+          </div>
+    </section>
+    <!-- END SECTION: HOW IT WORKS -->
+
+    <!-- ========================================
+    PATCH NOTE
+======================================== -->
+    <!-- END SECTION: PATCH NOTE -->
+
+    <section class="section" id="patch-notes">
+      <div class="container">
+        <div class="leaderboard">
+          <div class="leaderboard__header">
+            <h2 class="section__title">📋 Dernières modifications</h2>
+            <div class="patchnotes__filter">
+              <button class="patchnotes__tab patchnotes__tab--active" data-filter="all">Tout</button>
+              <button class="patchnotes__tab" data-filter="new">Nouveauté</button>
+              <button class="patchnotes__tab" data-filter="fix">Correction</button>
+              <button class="patchnotes__tab" data-filter="balance">Équilibrage</button>
+            </div>
+          </div>
+
+          <div class="patchnotes__list" id="patchnotes-list">
+            <div class="leaderboard__loading">
+              <div class="spinner"></div>
+              Chargement...
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+     START SECTION: TABLES
+ ======================================== -->
+    <section class="section" id="tables">
+      <div class="container">
+        <div class="section__header">
+          <h2 class="section__title">🕹️ Les Jeux :</h2>
+        </div>
+        <!-- Conteneur pour les cartes chargées dynamiquement -->
+        <div id="game-cards-container">
+          <!-- Spinner de chargement -->
+          <div style="display: flex; justify-content: center; align-items: center; min-height: 300px;">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ========================================
+        START SECTION: DAILY BONUS
+    ======================================== -->
+    <section class="section" id="bonus">
+      <div class="container">
+        <div class="daily-bonus glow-on-hover" id="dailyBonusCard">
+          <div class="daily-bonus__lock-overlay" id="bonusLockOverlay" style="display: none;">
+            <svg class="daily-bonus__lock-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <div class="daily-bonus__countdown" id="bonusCountdown">
+              Disponible dans <span id="bonusTimeLeft">24h</span>
+            </div>
+          </div>
+          <h2 class="daily-bonus__title">🎁 Bonus Quotidien</h2>
+          <p class="daily-bonus__subtitle">
+            Récupérez 500 points chaque jour gratuitement !
+          </p>
+          <button class="daily-bonus__button js-open-bonus" id="claimBonusBtn">
+            Récupérez vos points
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION: DAILY BONUS -->
+
+    <!-- ========================================
+     START SECTION: WEEKLY PASS
+======================================== -->
+    <section class="section" id="weekly-pass">
+      <div class="container">
+        <div class="weekly-pass-card" id="wheelCard">
+          <div class="weekly-pass__lock-overlay" id="wheelLockOverlay" style="display: none;">
+            <svg class="weekly-pass__lock-icon" xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <div class="weekly-pass__countdown">
+              Revenez demain !
+            </div>
+          </div>
+
+          <h2 class="weekly-pass__title">🎰 Weekly Pass</h2>
+          <p class="weekly-pass__subtitle">Tournez la roue chaque jour pendant 7 jours !</p>
+
+          <div class="weekly-pass__progress" id="weeklyProgress">Jour 0/7</div>
+
+          <div class="weekly-pass__days">
+            <div class="day-indicator" id="day-1">1</div>
+            <div class="day-indicator" id="day-2">2</div>
+            <div class="day-indicator" id="day-3">3</div>
+            <div class="day-indicator" id="day-4">4</div>
+            <div class="day-indicator" id="day-5">5</div>
+            <div class="day-indicator" id="day-6">6</div>
+            <div class="day-indicator" id="day-7">7</div>
+          </div>
+
+          <div class="wheel-container">
+            <canvas id="wheelCanvas" width="400" height="400"></canvas>
+          </div>
+
+          <button class="weekly-pass__button" id="spinButton">
+            Tourner la roue
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="countdown">
+      <div class="container">
+        <div class="leaderboard">
+          <div class="leaderboard__header">
+            <h2 class="section__title">⏳ Temps avant fermeture de P.A.F.F.</h2>
+          </div>
+          <div class="countdown__display">
+            <div class="countdown__unit">
+              <span class="countdown__value" id="countdown-days">00</span>
+              <span class="countdown__label">Jours</span>
+            </div>
+            <span class="countdown__sep">:</span>
+            <div class="countdown__unit">
+              <span class="countdown__value" id="countdown-hours">00</span>
+              <span class="countdown__label">Heures</span>
+            </div>
+            <span class="countdown__sep">:</span>
+            <div class="countdown__unit">
+              <span class="countdown__value" id="countdown-minutes">00</span>
+              <span class="countdown__label">Minutes</span>
+            </div>
+            <span class="countdown__sep">:</span>
+            <div class="countdown__unit">
+              <span class="countdown__value" id="countdown-seconds">00</span>
+              <span class="countdown__label">Secondes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+     START SECTION: LEADERBOARD
+======================================== -->
+    <div id="leaderboard-container">
+    </div>
+    <!-- END SECTION: LEADERBOARD -->
+
+    <!-- ========================================
+         START SECTION: RESPONSIBLE GAMING
+    ======================================== -->
+    <section class="section">
+      <div class="container">
+        <div class="responsible-gaming">
+          <h3 class="responsible-gaming__title">⚠️ Jeu Responsable</h3>
+          <p class="responsible-gaming__text">
+            Ce site est uniquement à but pédagogique. Pour de l'aide sur l'addiction aux jeux, consultez
+            <a href="https://www.drogues.gouv.fr/lessentiel-sur-les-usages-problematiques-decrans"
+              class="responsible-gaming__link" target="_blank">nos ressources</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- END SECTION: RESPONSIBLE GAMING -->
+  </main>
+
+  <!-- ========================================
+       START SECTION: FOOTER
+  ======================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__section">
+          <h3 class="footer__section-title">À propos</h3>
+          <ul class="footer__links">
+            <li><a href="/static/templates/aPropos/qui-sommes-nous.html">Qui sommes-nous</a></li>
+            <li><a href="/static/templates/aPropos/notre-mission.html">Notre mission</a></li>
+          </ul>
+        </div>
+        <div class="footer__section">
+          <h3 class="footer__section-title">Support</h3>
+          <ul class="footer__links">
+            <li><a href="/static/templates/support/contact.html">Contact</a></li>
+            <li><a href="/static/templates/support/signaler-un-bug.html">Signaler un bug</a></li>
+          </ul>
+        </div>
+        <div class="footer__section">
+          <h3 class="footer__section-title">Légal</h3>
+          <ul class="footer__links">
+            <li><a href="/static/templates/legal/termes-et-conditions.html">Termes et conditions</a></li>
+            <li><a href="/static/templates/legal/politique-de-confidentialite.html">Politique de confidentialité</a>
+            </li>
+            <li><a href="/static/templates/legal/cookies.html">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__disclaimer">
+          ⚠️ P.A.F.F. est un projet pédagogique fictif BTS SIO.
+        </p>
+        <p>&copy; 2026 P.A.F.F. – Tous droits réservés</p>
+      </div>
+    </div>
+  </footer>
+  <!-- END SECTION: FOOTER -->
+  <!-- ========================================
+       START SECTION: TOAST CONTAINER
+  ======================================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+  <!-- END SECTION: TOAST CONTAINER -->
+  <script>
+    window.CURRENT_USER_ID = "<%= user.id %>"; // si vous utilisez EJS
+    // ou
+    window.CURRENT_USER_ID = "{{ user.id }}";  // si Jinja/autre
+    // ou directement si vous avez déjà le userId quelque part en JS
+  </script>
+  <!-- JAVASCRIPT AUTRE -->
+  <script src="static/js/app.js"></script>
+  <script src="static/js/help.js"></script>
+  <script src="static/js/wheel.js"></script>
+  <script src="static/js/hearttbeat.js"></script>
+  <script src="static/js/gestion_classement.js"></script>
+  <script src="static/js/patchnote.js"></script>
+  <script src="/static/js/timer.js"></script>
+  <!-- Cinématique avancée des coffres -->
+  <script src="/static/js/chest-roulette.js"></script>
+
+  <!-- Chargeur de composants -->
+  <script src="static/js/components-loader.js"></script>
+
+  <!-- JAVASCRIPT JEUX -->
+  <script src="static/js/jeux/blackjack-client.js"></script>
+  <script src="static/js/jeux/blackjack-popup.js"></script>
+  <script src="static/js/jeux/puissance4-client.js"></script>
+  <script src="static/js/jeux/flappy-client.js"></script>
+  <script src="static/js/jeux/flappy-popup.js"></script>
+  <script src="static/js/jeux/flappy.js"></script>
+  <script src="static/js/jeux//demineur-client.js"></script>
+  <script src="static/js/jeux/tape-taupe-client.js"></script>
+  <script src="static/js/jeux/crash-client.js"></script>
+  <script src="static/js/jeux/mastermind-client.js"></script>
+  <script src="static/js/jeux/mastermind-popup.js"></script>
+  <script src="static/js/jeux/plinko-client.js"></script>
+  <script src="static/js/jeux/roulette-client.js"></script>
+  <script src="static/js/jeux/roulette-win-popup.js"></script>
+  <script src="static/js/jeux/hi-low-client.js"></script>
+  <script src="static/js/jeux/scratch-client.js"></script>
+  <script src="static/js/jeux/quiz-client.js"></script>
+  <script src="static/js/duel-client.js"></script>
+
+  <!-- JAVASCRIPT COMPTE -->
+  <script src="static/js/connexion.js"></script>
+  <script src="static/js/bonus.js"></script>
+  <script src="static/js/session_timer.js"></script>
+</body>
+
+</html>

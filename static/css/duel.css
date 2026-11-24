@@ -1,0 +1,224 @@
+/* ========================================
+   DUELS 1 CONTRE 1 (F3)
+   ======================================== */
+
+.modal--duel {
+  max-width: min(95vw, 640px);
+}
+
+.duel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.duel__bloc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.duel__titre {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Formulaire ── */
+.duel__ligne {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.duel__ligne--ou {
+  color: var(--text-secondary);
+}
+
+.duel__label {
+  min-width: 4.5rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.duel__champ {
+  flex: 1;
+  min-width: 10rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+}
+
+.duel__champ:focus {
+  outline: 2px solid var(--primary-purple);
+  outline-offset: 1px;
+}
+
+.duel__champ option {
+  background: var(--card-bg);
+}
+
+/* ── Boutons ── */
+.duel__bouton {
+  padding: 0.55rem 1rem;
+  background: linear-gradient(135deg, var(--primary-purple), var(--accent-blue));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.duel__bouton:hover,
+.duel__bouton:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4);
+}
+
+.duel__bouton:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.duel__bouton--secondaire {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* ── Bilan ── */
+.duel__bilan {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.duel__bilan strong {
+  display: block;
+  font-size: var(--font-size-xl);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Listes ── */
+.duel__liste {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.duel__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+}
+
+.duel__texte {
+  flex: 1;
+  min-width: 12rem;
+}
+
+.duel__actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.duel__vide {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.duel__resultat {
+  font-weight: 700;
+}
+
+.duel__resultat--victoire { color: var(--primary-green); }
+.duel__resultat--defaite { color: var(--primary-red); }
+.duel__resultat--egalite { color: var(--text-secondary); }
+
+/* ── Règles ── */
+.duel__regles {
+  color: var(--text-secondary);
+}
+
+.duel__regles summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.duel__regles ul {
+  margin: var(--space-1) 0 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* ── Bandeau affiché dans le jeu pendant un duel ── */
+.duel-bandeau {
+  margin-bottom: var(--space-2);
+  padding: 0.7rem 1rem;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid var(--primary-purple);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* ── Bouton « Défier » sur les cartes de jeux ── */
+.table-card__duel-btn {
+  padding: var(--space-1) 0.8rem;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--primary-purple);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.table-card__duel-btn:hover,
+.table-card__duel-btn:focus-visible {
+  background: rgba(168, 85, 247, 0.2);
+  outline: 2px solid var(--primary-purple);
+  outline-offset: 2px;
+}
+
+/* ── Classement par jeu : choix du jeu ── */
+.leaderboard__jeu-choix {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+  .duel__label {
+    min-width: 100%;
+  }
+  .duel__bilan {
+    font-size: var(--font-size-sm);
+  }
+}

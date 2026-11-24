@@ -1,0 +1,138 @@
+<div class="win-popup-overlay" id="mastermindWinPopupOverlay">
+  <div class="win-popup">
+    <div class="win-popup__icon" id="mastermindPopupIcon">🎯</div>
+    <h2 class="win-popup__title" id="mastermindPopupTitle">Résultat</h2>
+    
+    <div class="win-popup__amount" id="mastermindPopupAmount">+0 pts</div>
+    
+    <div class="win-popup__details">
+      <div class="win-popup__secret-code" id="mastermindPopupSecretCode">
+        <!-- Code secret affiché ici -->
+      </div>
+      
+      <div class="win-popup__detail-row">
+        <span class="win-popup__detail-label">Tentatives</span>
+        <span class="win-popup__detail-value" id="mastermindPopupAttempts">0/10</span>
+      </div>
+      
+      <div class="win-popup__detail-row">
+        <span class="win-popup__detail-label">Mise</span>
+        <span class="win-popup__detail-value" id="mastermindPopupBet">50 pts</span>
+      </div>
+      
+      <div class="win-popup__detail-row">
+        <span class="win-popup__detail-label">Nouveau solde</span>
+        <span class="win-popup__detail-value" id="mastermindPopupBalance">0 pts</span>
+      </div>
+    </div>
+    
+    <p class="win-popup__message" id="mastermindPopupMessage"></p>
+    
+    <button class="win-popup__button" id="mastermindPopupCloseBtn">
+      Continuer
+    </button>
+  </div>
+</div>
+
+<style>
+/* Styles spécifiques pour le code secret Mastermind */
+.win-popup__secret-code {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+}
+
+.win-popup__peg {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.win-popup__peg::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  filter: blur(3px);
+}
+
+.win-popup__peg--red { 
+  background: #e74c3c; 
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.6); 
+}
+
+.win-popup__peg--blue { 
+  background: #3498db; 
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.6); 
+}
+
+.win-popup__peg--green { 
+  background: #2ecc71; 
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.6); 
+}
+
+.win-popup__peg--yellow { 
+  background: #f1c40f; 
+  box-shadow: 0 0 15px rgba(241, 196, 15, 0.6); 
+}
+
+.win-popup__peg--purple { 
+  background: #9b59b6; 
+  box-shadow: 0 0 15px rgba(155, 89, 182, 0.6); 
+}
+
+.win-popup__peg--orange { 
+  background: #e67e22; 
+  box-shadow: 0 0 15px rgba(230, 126, 34, 0.6); 
+}
+
+/* Animation des pions */
+@keyframes pegReveal {
+  0% {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) rotate(20deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.win-popup__peg {
+  animation: pegReveal 0.5s ease-out backwards;
+}
+
+.win-popup__peg:nth-child(1) { animation-delay: 0.1s; }
+.win-popup__peg:nth-child(2) { animation-delay: 0.2s; }
+.win-popup__peg:nth-child(3) { animation-delay: 0.3s; }
+.win-popup__peg:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .win-popup__peg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .win-popup__peg::after {
+    top: 8px;
+    left: 8px;
+    width: 12px;
+    height: 12px;
+  }
+}
+</style>

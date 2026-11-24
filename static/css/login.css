@@ -1,0 +1,635 @@
+/* ========================================
+   LOGIN PAGE - Fidèle à la DA principale
+======================================== */
+
+/* Imports des polices (si non global) */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+/* ========================================
+   RESET & BASE (identique au site)
+======================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Rajdhani', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background: #0a0a0f;
+  color: #ffffff;
+  min-height: 100vh;
+  position: relative;
+}
+
+
+:root {
+  --primary-purple: #a855f7;
+  --primary-green: #10b981;
+  --primary-red: #ef4444;
+  --accent-blue: #3b82f6;
+  --dark-bg: #0a0a0f;
+  --card-bg: #1a1a2e;
+  --card-hover: #252540;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --border-glow: rgba(168, 85, 247, 0.3);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-1: 0 4px 16px rgba(0,0,0,.25);
+  --shadow-2: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
+}
+
+/* ========================================
+   ANIMATED BACKGROUND (identique)
+======================================== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  background: 
+    radial-gradient(circle at 20% 50%, var(--primary-purple) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, var(--primary-green) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, var(--accent-blue) 0%, transparent 50%);
+  animation: bgPulse 15s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.25; }
+}
+
+/* ========================================
+   POPUP OVERLAY
+======================================== */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.popup-box {
+  background: var(--card-bg);
+  border: 2px solid var(--primary-purple);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 
+    0 10px 40px rgba(168, 85, 247, 0.4),
+    0 0 0 1px rgba(168, 85, 247, 0.1);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-box h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: var(--font-size-xl);
+  color: var(--primary-green);
+  margin-bottom: var(--space-2);
+}
+
+.popup-box p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+  line-height: 1.6;
+}
+
+.popup-box button {
+  background: linear-gradient(135deg, var(--primary-purple), var(--primary-green));
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.popup-box button:hover,
+.popup-box button:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+  outline: 2px solid var(--primary-purple);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.login-container > h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: var(--font-size-3xl);
+  font-weight: 900;
+  margin-bottom: var(--space-4);
+  background: linear-gradient(135deg, var(--primary-purple), var(--primary-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+/* ========================================
+   FORMS WRAPPER
+======================================== */
+.forms-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: var(--space-4);
+}
+
+/* ========================================
+   SECTIONS (Créer compte / Connexion)
+======================================== */
+.create-account,
+.login {
+  background: var(--card-bg);
+  border: 2px solid var(--border-glow);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-2);
+  transition: all var(--transition-base);
+}
+
+.create-account:hover,
+.login:hover {
+  border-color: var(--primary-purple);
+  background: var(--card-hover);
+  box-shadow: 
+    0 10px 40px rgba(168, 85, 247, 0.3),
+    0 0 0 1px var(--primary-purple);
+}
+
+.create-account h2,
+.login h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.create-account h2::before {
+  content: '✨';
+  font-size: var(--font-size-2xl);
+}
+
+.login h2::before {
+  content: '🔐';
+  font-size: var(--font-size-2xl);
+}
+
+.code-modal__timer {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ========================================
+   FORMS
+======================================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+input,
+select {
+  background: var(--dark-bg);
+  border: 2px solid rgba(168, 85, 247, 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-purple);
+  box-shadow: 
+    0 0 0 3px rgba(168, 85, 247, 0.2),
+    0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+input::placeholder {
+  color: var(--text-secondary);
+}
+
+select option {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+button[type="submit"] {
+  background: linear-gradient(135deg, var(--primary-purple), var(--primary-green));
+  color: white;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+  margin-top: var(--space-1);
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+  outline: 2px solid var(--primary-purple);
+  outline-offset: 2px;
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   BACK LINK
+======================================== */
+.login-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all var(--transition-fast);
+}
+
+.login-back::before {
+  content: '←';
+  font-size: var(--font-size-xl);
+}
+
+.login-back:hover,
+.login-back:focus {
+  color: var(--primary-green);
+  border-color: var(--primary-purple);
+  background: var(--card-bg);
+  outline: 2px solid var(--primary-purple);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   MESSAGES (si besoin d'affichage inline)
+======================================== */
+.popup-message {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-align: center;
+  display: none;
+}
+
+.popup-message.success {
+  background: rgba(16, 185, 129, 0.2);
+  border: 2px solid var(--primary-green);
+  color: var(--primary-green);
+  display: block;
+}
+
+.popup-message.error {
+  background: rgba(239, 68, 68, 0.2);
+  border: 2px solid var(--primary-red);
+  color: var(--primary-red);
+  display: block;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 768px) {
+  .login-container > h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .forms-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .create-account,
+  .login {
+    padding: var(--space-3);
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: var(--space-2);
+  }
+
+  .login-container > h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .create-account h2,
+  .login h2 {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* ========================================
+   ANIMATIONS ADDITIONNELLES
+======================================== */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+  }
+}
+
+/* Ajouter une animation subtile sur les cartes */
+.create-account,
+.login {
+  animation: fadeInUp 0.6s ease;
+}
+
+.create-account {
+  animation-delay: 0.1s;
+}
+
+.login {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    /* Style pour la modale de code */
+    .code-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .code-modal.active {
+      display: flex;
+    }
+
+    .code-modal__content {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .code-modal__header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-modal__title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: #10b981;
+      margin-bottom: 0.5rem;
+    }
+
+    .code-modal__subtitle {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .code-modal__email {
+      color: #10b981;
+      font-weight: 600;
+    }
+
+    .code-modal__input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+      letter-spacing: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: 8px;
+      color: white;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .code-modal__input:focus {
+      outline: none;
+      border-color: #10b981;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+
+    .code-modal__buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .code-modal__button {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .code-modal__button--primary {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+    }
+
+    .code-modal__button--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    .code-modal__button--secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+    }
+
+    .code-modal__button--secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .code-modal__loading {
+      text-align: center;
+      color: #10b981;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .code-modal__loading.active {
+      display: block;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(16, 185, 129, 0.3);
+      border-top-color: #10b981;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+/* ===== Mot de passe, conditions d'utilisation ===== */
+.conditions-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  text-align: left;
+}
+
+.conditions-label input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  padding: 0;
+  accent-color: var(--primary-purple);
+}
+
+.conditions-label a,
+.forgot-link {
+  color: var(--primary-purple);
+  text-decoration: underline;
+}
+
+.code-modal__password {
+  width: 100%;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}

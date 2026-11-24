@@ -1,0 +1,351 @@
+<!-- ========================================
+  MODAL : Scratch Game
+  ======================================== -->
+<div class="modal-overlay" id="scratchModal" role="dialog" aria-modal="true" aria-labelledby="scratchModalTitle">
+  <div class="modal modal--scratch">
+    <div class="modal__header">
+      <h2 class="modal__title" id="scratchModalTitle">🎟️ Scratch & Win</h2>
+      <button class="modal__close js-close-scratch-modal" aria-label="Fermer">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="scratch-game">
+
+        <!-- Mise -->
+        <div class="scratch__free-badge">
+          🎟️ Ticket <strong>GRATUIT</strong>
+          <span class="scratch__free-badge-sub">Réservé aux joueurs avec moins de 500 pts</span>
+        </div>
+
+        <!-- Ticket -->
+        <div class="scratch__ticket" id="scratchTicket">
+          <div class="scratch__ticket-header">
+            <span class="scratch__ticket-title">GRATTEZ & GAGNEZ</span>
+            <span class="scratch__ticket-subtitle">Révélez 3 symboles identiques pour gagner !</span>
+          </div>
+
+          <div class="scratch__grid" id="scratchGrid">
+            <!-- 9 cases générées par JS -->
+          </div>
+
+          <div class="scratch__ticket-footer" id="scratchFooter">
+            <span class="scratch__multiplier-hint">💎 500 pts | 🥇 200 pts | 🥈 100 pts | 🥉 50 pts | ⭐ 25 pts</span>
+          </div>
+        </div>
+
+        <!-- Résultat -->
+        <div class="scratch__result" id="scratchResult" style="display:none;"></div>
+
+        <!-- Boutons -->
+        <div class="scratch__controls" id="scratchControls">
+          <button class="scratch__btn scratch__btn--primary" id="scratchBuyBtn">🎟️ Acheter le ticket</button>
+          <button class="scratch__btn scratch__btn--accent" id="scratchRevealAllBtn" disabled> Tout révéler</button>
+          <button class="scratch__btn scratch__btn--ghost" id="scratchResetBtn" disabled>Nouveau ticket</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ======================================
+   SCRATCH GAME — STYLES
+====================================== */
+  .modal--scratch {
+    max-width: 520px;
+    width: 95%;
+  }
+
+  .scratch-game {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 0.25rem 0;
+  }
+
+  /* --- Mise --- */
+  .scratch__bet-area {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .scratch__bet-label {
+    font-size: 0.9rem;
+    color: var(--text-muted, #aaa);
+  }
+
+  .scratch__bet-input {
+    width: 100px;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border, #333);
+    background: var(--bg-input, #1a1a1a);
+    color: var(--text, #fff);
+    font-size: 0.95rem;
+  }
+
+  /* --- Ticket --- */
+  .scratch__ticket {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 16px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    padding: 1rem;
+    position: relative;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .scratch__ticket::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: repeating-linear-gradient(45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.015) 10px,
+        rgba(255, 255, 255, 0.015) 11px);
+    pointer-events: none;
+  }
+
+  .scratch__ticket-header {
+    text-align: center;
+    margin-bottom: 0.85rem;
+  }
+
+  .scratch__ticket-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: #ffd700;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+  }
+
+  .scratch__ticket-subtitle {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 2px;
+  }
+
+  /* --- Grille --- */
+  .scratch__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
+  }
+
+  /* --- Case scratch --- */
+  .scratch__cell {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 215, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.1s, border-color 0.2s;
+    user-select: none;
+  }
+
+  .scratch__cell:hover:not(.scratch__cell--revealed):not(.scratch__cell--disabled) {
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: scale(1.03);
+  }
+
+  /* Couche "à gratter" */
+  .scratch__cell-cover {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.15);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: 2;
+  }
+
+  .scratch__cell-cover-icon {
+    font-size: 1.8rem;
+    opacity: 0.3;
+  }
+
+  /* Contenu révélé */
+  .scratch__cell-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    z-index: 1;
+  }
+
+  .scratch__cell-symbol {
+    font-size: 2rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+  }
+
+  .scratch__cell-value {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+  }
+
+  /* Etat révélé */
+  .scratch__cell--revealed .scratch__cell-cover {
+    opacity: 0;
+    transform: scale(1.2) rotate(5deg);
+    pointer-events: none;
+  }
+
+  /* Highlight si gagnant */
+  .scratch__cell--winner {
+    border-color: #ffd700 !important;
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.6), inset 0 0 16px rgba(255, 215, 0, 0.1);
+    animation: scratch-winner-pulse 0.8s ease infinite alternate;
+  }
+
+  @keyframes scratch-winner-pulse {
+    from {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.08);
+    }
+
+    to {
+      box-shadow: 0 0 24px rgba(255, 215, 0, 0.8), inset 0 0 24px rgba(255, 215, 0, 0.15);
+    }
+  }
+
+  /* Etat désactivé */
+  .scratch__cell--disabled {
+    cursor: default;
+  }
+
+  /* --- Footer --- */
+  .scratch__ticket-footer {
+    margin-top: 0.85rem;
+    text-align: center;
+  }
+
+  .scratch__multiplier-hint {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.03em;
+  }
+
+  /* --- Résultat --- */
+  .scratch__result {
+    text-align: center;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    animation: scratch-result-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes scratch-result-in {
+    from {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .scratch__result--win {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+  }
+
+  .scratch__result--lose {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: #f87171;
+  }
+
+  /* --- Boutons --- */
+  .scratch__controls {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .scratch__btn {
+    flex: 1;
+    min-width: 110px;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s, background 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .scratch__btn:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .scratch__btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .scratch__btn--primary {
+    background: linear-gradient(135deg, #ffd700, #ffaa00);
+    color: #1a1a1a;
+  }
+
+  .scratch__btn--primary:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  .scratch__btn--accent {
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    color: #fff;
+  }
+
+  .scratch__btn--accent:hover:not(:disabled) {
+    opacity: 0.88;
+  }
+
+  .scratch__btn--ghost {
+    background: rgba(255, 255, 255, 0.07);
+    color: var(--text-muted, #aaa);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .scratch__btn--ghost:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  /* Animation d'achat */
+  @keyframes ticket-drop {
+    from {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .scratch__ticket--entering {
+    animation: ticket-drop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+</style>

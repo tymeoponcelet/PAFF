@@ -1,0 +1,59 @@
+<div class="modal-overlay" id="demineurModal" role="dialog" aria-modal="true" aria-labelledby="demineurModalTitle">
+  <div class="modal">
+    <div class="modal__header">
+      <h2 class="modal__title" id="demineurModalTitle">💣 Démineur</h2>
+      <button class="modal__close js-close-demineur" aria-label="Fermer la modale">×</button>
+    </div>
+    <div class="modal__body">
+      <div class="demineur">
+        <!-- Zone de mise -->
+        <div class="demineur__bet-area">
+          <label class="demineur__bet-label" for="demineurBetAmount">Mise :</label>
+          <input type="number" id="demineurBetAmount" class="demineur__bet-input" value="100" min="50" max="300"
+            step="50" aria-label="Montant de la mise en points" />
+          <span class="demineur__bet-label">pts</span>
+        </div>
+
+        <!-- Informations du jeu -->
+        <div class="demineur__info">
+          <div class="demineur__stats">
+            <div class="demineur__stat">
+              <span class="demineur__stat-label">Mines :</span>
+              <span class="demineur__stat-value" id="demineurMinesCount">10</span>
+            </div>
+            <div class="demineur__stat">
+              <span class="demineur__stat-label">Temps :</span>
+              <span class="demineur__stat-value" id="demineurTimer">0s</span>
+            </div>
+            <div class="demineur__stat">
+              <span class="demineur__stat-label">Cases restantes :</span>
+              <span class="demineur__stat-value" id="demineurRemaining">71</span>
+            </div>
+            <div class="demineur__stat">
+              <span class="demineur__stat-label">Multiplicateur :</span>
+              <span class="demineur__stat-value" id="demineurMultiplier">x3</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Grille du jeu -->
+        <div class="demineur__board-container">
+          <div class="demineur__board" id="demineurBoard">
+            <!-- Les cases seront générées par JavaScript -->
+          </div>
+        </div>
+
+        <!-- Résultat du jeu -->
+        <div class="demineur__result" id="demineurResult" style="display: none;"></div>
+
+        <!-- Contrôles du jeu -->
+        <div class="demineur__controls">
+          <button class="demineur__btn demineur__btn--primary" id="demineurStartBtn">Commencer la partie</button>
+          <button class="demineur__btn demineur__btn--flag" id="demineurFlagBtn" disabled>🚩</button>
+          <button class="demineur__btn demineur__btn--ghost" id="demineurResetBtn" disabled>Nouvelle partie</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

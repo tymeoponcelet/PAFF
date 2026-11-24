@@ -1,0 +1,77 @@
+/* ========================================
+   COUNTDOWN
+   ======================================== */
+
+.countdown__display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 24px 16px 20px;
+    flex-wrap: wrap;
+}
+
+.countdown__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px 24px;
+    min-width: 80px;
+    transition: background 0.2s;
+}
+
+.countdown__unit:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.countdown__value {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--primary-green, #10b981);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.countdown__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary, #aaa);
+}
+
+.countdown__sep {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-secondary, #aaa);
+    opacity: 0.4;
+    align-self: flex-start;
+    padding-top: 14px;
+}
+
+.countdown__display--ended .countdown__value {
+    color: #f87171;
+    text-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+@media (max-width: 480px) {
+    .countdown__unit {
+        min-width: 60px;
+        padding: 12px 14px;
+    }
+
+    .countdown__value {
+        font-size: 1.8rem;
+    }
+
+    .countdown__sep {
+        font-size: 1.5rem;
+        padding-top: 10px;
+    }
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex">
+  <title>Administration | P.A.F.F.</title>
+  <link rel="icon" href="static/img/Icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/duel.css">
+  <link rel="stylesheet" href="static/css/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="admin">
+  <header class="admin__entete">
+    <h1 class="admin__titre">🛡️ Administration P.A.F.F.</h1>
+    <a class="duel__bouton duel__bouton--secondaire" href="/">← Retour au site</a>
+  </header>
+
+  <main class="admin__contenu">
+    <!-- Chiffres clés -->
+    <section class="admin__stats" id="adminStats" aria-label="Chiffres clés"></section>
+
+    <!-- Onglets -->
+    <div class="admin__onglets" role="tablist">
+      <button class="admin__onglet is-actif" role="tab" aria-selected="true" data-onglet="comptes">Comptes</button>
+      <button class="admin__onglet" role="tab" aria-selected="false" data-onglet="questions">Questions de quiz</button>
+    </div>
+
+    <!-- ── Comptes ── -->
+    <section class="admin__panneau" id="panneau-comptes" role="tabpanel">
+      <div class="admin__barre">
+        <input class="duel__champ" type="search" id="rechercheCompte"
+          placeholder="Rechercher un pseudo, un mail ou une classe…" aria-label="Rechercher un compte">
+      </div>
+      <div class="admin__tableau-wrap">
+        <table class="admin__tableau">
+          <thead>
+            <tr>
+              <th>Pseudo</th>
+              <th>Mail</th>
+              <th>Classe</th>
+              <th class="admin__nombre">Points</th>
+              <th>État</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="listeComptes"></tbody>
+        </table>
+      </div>
+      <p class="admin__note">Les 100 comptes les plus récents correspondant à la recherche sont affichés.
+        Un compte suspendu ne peut plus se connecter et disparaît des classements.</p>
+    </section>
+
+    <!-- ── Questions ── -->
+    <section class="admin__panneau" id="panneau-questions" role="tabpanel" hidden>
+      <form class="admin__formulaire" id="formQuestion" autocomplete="off">
+        <h2 class="admin__sous-titre" id="formQuestionTitre">Ajouter une question</h2>
+        <input type="hidden" id="questionId">
+
+        <div class="admin__champ">
+          <label for="questionTheme">Thème</label>
+          <input class="duel__champ" id="questionTheme" list="listeThemes" maxlength="50" required
+            placeholder="ex. Informatique">
+          <datalist id="listeThemes"></datalist>
+        </div>
+
+        <div class="admin__champ">
+          <label for="questionTexte">Question</label>
+          <textarea class="duel__champ" id="questionTexte" maxlength="300" rows="2" required></textarea>
+        </div>
+
+        <fieldset class="admin__reponses">
+          <legend>Réponses (cochez la bonne)</legend>
+          <div class="admin__reponse">
+            <input type="radio" name="bonne" value="1" id="bonne1" required aria-label="Bonne réponse : A">
+            <input class="duel__champ" id="choix1" maxlength="150" required placeholder="Réponse A">
+          </div>
+          <div class="admin__reponse">
+            <input type="radio" name="bonne" value="2" id="bonne2" aria-label="Bonne réponse : B">
+            <input class="duel__champ" id="choix2" maxlength="150" required placeholder="Réponse B">
+          </div>
+          <div class="admin__reponse">
+            <input type="radio" name="bonne" value="3" id="bonne3" aria-label="Bonne réponse : C">
+            <input class="duel__champ" id="choix3" maxlength="150" required placeholder="Réponse C">
+          </div>
+          <div class="admin__reponse">
+            <input type="radio" name="bonne" value="4" id="bonne4" aria-label="Bonne réponse : D">
+            <input class="duel__champ" id="choix4" maxlength="150" required placeholder="Réponse D">
+          </div>
+        </fieldset>
+
+        <div class="admin__champ">
+          <label for="questionExplication">Explication (facultative, affichée après la réponse)</label>
+          <input class="duel__champ" id="questionExplication" maxlength="300">
+        </div>
+
+        <div class="admin__actions-form">
+          <button class="duel__bouton" type="submit" id="boutonEnregistrer">Ajouter la question</button>
+          <button class="duel__bouton duel__bouton--secondaire" type="button" id="boutonAnnulerEdition" hidden>
+            Annuler la modification
+          </button>
+        </div>
+      </form>
+
+      <div class="admin__barre">
+        <select class="duel__champ" id="filtreTheme" aria-label="Filtrer par thème" style="flex: 0 1 16rem;">
+          <option value="">Tous les thèmes</option>
+        </select>
+        <span class="admin__note" id="compteQuestions"></span>
+      </div>
+      <div class="admin__tableau-wrap">
+        <table class="admin__tableau">
+          <thead>
+            <tr>
+              <th>Thème</th>
+              <th>Question</th>
+              <th>Bonne réponse</th>
+              <th>Active</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="listeQuestions"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+  <script src="static/js/admin.js"></script>
+</body>
+
+</html>

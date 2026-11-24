@@ -1,0 +1,1357 @@
+<div class="container">
+  <div class="tables-grid">
+    <!-- ========================================
+        QUIZ ÉDUCATIFS (F4)
+    ======================================== -->
+    <div class="table-card js-open-quiz" data-table-name="Quiz" tabindex="0" role="button">
+      <div class="table-card__image quiz-card__image" aria-hidden="true">
+        <span class="quiz-card__bulle">?</span>
+        <span class="quiz-card__emoji">🧠</span>
+        <span class="quiz-card__bulle quiz-card__bulle--droite">!</span>
+      </div>
+      <div class="table-card__info">
+        <h3 class="table-card__title">Quiz</h3>
+        <p class="table-card__desc">10 questions de culture générale et de cours, 20 secondes pour répondre à
+          chacune !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">📚 Éducatif</span>
+          <span class="table-card__stat">+10 pts par bonne réponse</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button" style="flex: 1;">Jouer</button>
+          <button class="table-card__duel-btn js-open-duel" data-jeu="quiz" aria-label="Défier un joueur au quiz">⚔️ Défier</button>
+          <button class="table-card__help-btn js-open-help" data-game="quiz" aria-label="Aide Quiz">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-card js-open-table-blackjack" data-table-name="Table Débutant" data-min-bet="50">
+      <div class="table-card__image"
+        style="background: linear-gradient(135deg, #0a3d21 0%, #0f5030 50%, #0a3d21 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
+
+        <!-- Texture feutre de table de casino -->
+        <div style="position: absolute; inset: 0;
+            background-image:
+              repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px),
+              repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.03) 2px, rgba(0, 0, 0, 0.03) 4px),
+              radial-gradient(ellipse at 30% 40%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 60%, rgba(0, 0, 0, 0.08) 0%, transparent 50%);
+            opacity: 1;"></div>
+
+        <!-- Lignes de jeu subtiles (comme sur une vraie table) -->
+        <div
+          style="position: absolute; bottom: 25%; left: 50%; transform: translateX(-50%); width: 70%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15) 20%, rgba(255, 215, 0, 0.15) 80%, transparent); opacity: 0.6;">
+        </div>
+
+        <!-- Contenu principal -->
+        <div style="position: relative; z-index: 1; width: 100%; max-width: 180px;">
+
+          <!-- Cartes BLACKJACK naturel (As + Roi = 21) -->
+          <div
+            style="display: flex; justify-content: center; align-items: center; height: 85px; position: relative; z-index: 1;">
+
+            <!-- Carte 1 - As de Pique (valeur 11) -->
+            <div
+              style="width: 56px; height: 78px; background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%); border-radius: 6px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.3); position: absolute; left: 50%; transform: translateX(-68px) rotate(-12deg); border: 1px solid rgba(0, 0, 0, 0.15);">
+              <div style="padding: 7px;">
+                <div style="font-size: 16px; font-weight: bold; color: #2c3e50; line-height: 1;">A</div>
+              </div>
+              <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 36px; color: #2c3e50; opacity: 0.9;">
+                ♠</div>
+              <div style="position: absolute; bottom: 7px; right: 7px; transform: rotate(180deg);">
+                <div style="font-size: 16px; font-weight: bold; color: #2c3e50; line-height: 1;">A</div>
+              </div>
+            </div>
+
+            <!-- Carte 2 - Roi de Carreau (valeur 10) -->
+            <div
+              style="width: 56px; height: 78px; background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%); border-radius: 6px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.3); position: absolute; left: 50%; transform: translateX(12px) rotate(12deg); border: 1px solid rgba(0, 0, 0, 0.15); z-index: 2;">
+              <div style="padding: 7px;">
+                <div style="font-size: 16px; font-weight: bold; color: #e74c3c; line-height: 1;">K</div>
+              </div>
+              <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 36px; color: #e74c3c; opacity: 0.9;">
+                ♦</div>
+              <div style="position: absolute; bottom: 7px; right: 7px; transform: rotate(180deg);">
+                <div style="font-size: 16px; font-weight: bold; color: #e74c3c; line-height: 1;">K</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Bordure de table (effet bois) -->
+        <div
+          style="position: absolute; inset: 0; border: 3px solid rgba(101, 67, 33, 0.4); border-radius: 12px; pointer-events: none;">
+        </div>
+
+        <!-- Effet de vignette pour donner de la profondeur -->
+        <div
+          style="position: absolute; inset: 0; box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.4); pointer-events: none; border-radius: 12px;">
+        </div>
+
+      </div>
+      <div class="table-card__info">
+        <h3 class="table-card__title">Table Blackjack</h3>
+        <p class="table-card__desc">Jeu de cartes où l'objectif est d'atteindre 21 points sans les dépasser, en
+          battant la main du croupier !</p>
+
+        <div class="table-card__stats">
+          <span class="table-card__stat">⚡ Rapide</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button js-open-table-blackjack" style="flex: 1;" data-table-name="Table Débutant"
+            data-min-bet="50">
+            Rejoindre
+          </button>
+          <button class="table-card__help-btn js-open-help" data-game="blackjack" aria-label="Aide Blackjack">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- END : BLACKJACK TABLES -->
+
+
+    <!-- ========================================
+    START SECTION : PUISSANCE 4 TABLE
+  ======================================== -->
+
+    <div class="table-card js-open-table-puissance4" data-table-name="Table Standard" data-min-bet="100" tabindex="0"
+      role="button">
+
+      <div class="table-card__image" style="background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);">
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="metalGrid" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#34495e;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#2c3e50;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1a252f;stop-opacity:1" />
+            </linearGradient>
+            <filter id="metallic">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="1" />
+              <feOffset dx="0" dy="1" result="offsetblur" />
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5" />
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <rect width="80" height="80" fill="url(#metalGrid)" rx="8" />
+          <rect width="80" height="80" fill="none" stroke="#7f8c8d" stroke-width="3" rx="8" />
+
+          <!-- Rivets décoratifs -->
+          <circle cx="10" cy="10" r="2" fill="#95a5a6" />
+          <circle cx="70" cy="10" r="2" fill="#95a5a6" />
+          <circle cx="10" cy="70" r="2" fill="#95a5a6" />
+          <circle cx="70" cy="70" r="2" fill="#95a5a6" />
+
+          <circle cx="20" cy="20" r="8" fill="#f1c40f" filter="url(#metallic)" />
+          <circle cx="40" cy="20" r="8" fill="#f1c40f" filter="url(#metallic)" />
+          <circle cx="60" cy="20" r="8" fill="#f1c40f" filter="url(#metallic)" />
+          <circle cx="20" cy="40" r="8" fill="#e74c3c" filter="url(#metallic)" />
+          <circle cx="40" cy="40" r="8" fill="#f1c40f" filter="url(#metallic)" />
+          <circle cx="60" cy="40" r="8" fill="#e74c3c" filter="url(#metallic)" />
+          <circle cx="20" cy="60" r="8" fill="#e74c3c" filter="url(#metallic)" />
+          <circle cx="40" cy="60" r="8" fill="#e74c3c" filter="url(#metallic)" />
+          <circle cx="60" cy="60" r="8" fill="#f1c40f" filter="url(#metallic)" />
+        </svg>
+      </div>
+
+      <div class="table-card__info">
+        <h3 class="table-card__title">Puissance 4</h3>
+        <p class="table-card__desc">Défiez un robot dans une partie de Puissance 4 et gagnez un maximum de points!</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⏲️​ Modéré</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button" style="flex: 1;">Rejoindre</button>
+          <button class="table-card__help-btn js-open-help" data-game="puissance4" aria-label="Aide Puissance 4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- END : PUISSANCE 4 TABLE -->
+
+
+    <!-- ========================================
+          JEU 3 : CRASH GAMES
+  ======================================== -->
+    <div class="table-card js-open-crash" data-table-name="Jeu Crash" data-min-bet="100" tabindex="0" role="button">
+      <div class="table-card__image"
+        style="background: radial-gradient(circle at 30% 40%, #3a2b7a 0%, #0a0f2a 40%, #020008 100%)" ;>
+        🚀
+      </div>
+      <div class="table-card__info">
+        <h3 class="table-card__title">Crash</h3>
+        <p class="table-card__desc">Jeu où une courbe de multiplicateur monte progressivement puis « crash »
+          soudainement; le but: encaisser avant l’explosion !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⚡ Rapide</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button js-open-crash" style="flex: 1;">Rejoindre</button>
+          <button class="table-card__help-btn js-open-help" data-game="crash" aria-label="Aide Crash">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+         JEUX 4 : FLAPPY BIRD
+    ======================================== -->
+    <div class="table-card js-open-flappy" data-table-name="Jeu Flappy" data-min-bet="100" tabindex="0" role="button">
+      <div class="table-card__image"
+        style="background: url('static/img/flappy/background.png') center/cover no-repeat, linear-gradient(180deg, #4ec0ca 0%, #87ceeb 100%); position: relative; overflow: hidden;">
+
+        <!-- Tuyau du bas (à gauche) -->
+        <img src="static/img/flappy/tuyaux01.png" alt=""
+          style="position: absolute; bottom: 0; left: 10%; height: 65%; width: auto; image-rendering: pixelated;">
+
+        <!-- Tuyau du haut (à droite) -->
+        <img src="static/img/flappy/tuyaux01.png" alt=""
+          style="position: absolute; top: 0; right: 15%; height: 55%; width: auto; image-rendering: pixelated; transform: scaleY(-1);">
+
+        <!-- Oiseau Flappy -->
+        <img src="static/img/flappy/bird01.png" alt=""
+          style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: auto; image-rendering: pixelated; filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.2));">
+      </div>
+      <div class="table-card__info">
+        <h3 class="table-card__title">Flappy</h3>
+        <p class="table-card__desc">Flappy est un jeu où tu fais voler un oiseau en cliquant pour éviter les
+          tuyaux !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⌛​ Très long</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button" style="flex: 1;">Rejoindre</button>
+          <button class="table-card__duel-btn js-open-duel" data-jeu="flappy" aria-label="Défier un joueur à Flappy">⚔️ Défier</button>
+          <button class="table-card__help-btn js-open-help" data-game="flappy" aria-label="Aide Flappy">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========================================
+        JEUX 5 : PLINKO
+    ======================================== -->
+    <div class="table-card js-open-table" data-table-name="Jeu Plinko" data-min-bet="100" tabindex="0" role="button">
+      <div class="table-card__image"
+        style="background: linear-gradient(180deg, #2d2550 0%, #1a1535 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 20px;">
+
+        <!-- Plateau de Plinko avec trajectoires -->
+        <div style="position: relative; width: 100%; max-width: 180px; height: 160px;">
+
+          <!-- Trajectoire courbe gauche (SVG) -->
+          <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"
+            viewBox="0 0 180 160" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 50 30 Q 80 60, 50 90 Q 30 110, 20 140" fill="none" stroke="rgba(138, 116, 180, 0.3)"
+              stroke-width="2" stroke-linecap="round" />
+
+            <path d="M 130 30 Q 100 60, 130 90 Q 150 110, 160 140" fill="none" stroke="rgba(138, 116, 180, 0.3)"
+              stroke-width="2" stroke-linecap="round" />
+          </svg>
+
+          <!-- Ligne 1 : 1 piquet (haut) -->
+          <div style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 40px;">
+            <div
+              style="width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #ffc947 0%, #ff9d1f 100%); box-shadow: 0 5px 15px rgba(255, 157, 31, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.4); position: relative; border: 2px solid rgba(0, 0, 0, 0.2);">
+              <div
+                style="position: absolute; top: 3px; left: 5px; width: 6px; height: 6px; background: rgba(255, 255, 255, 0.7); border-radius: 50%; filter: blur(1px);">
+              </div>
+            </div>
+          </div>
+
+          <!-- Ligne 2 : 2 piquets -->
+          <div style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); display: flex; gap: 40px;">
+            <div
+              style="width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #ffc947 0%, #ff9d1f 100%); box-shadow: 0 5px 15px rgba(255, 157, 31, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.4); position: relative; border: 2px solid rgba(0, 0, 0, 0.2);">
+              <div
+                style="position: absolute; top: 3px; left: 5px; width: 6px; height: 6px; background: rgba(255, 255, 255, 0.7); border-radius: 50%; filter: blur(1px);">
+              </div>
+            </div>
+            <div
+              style="width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #ffc947 0%, #ff9d1f 100%); box-shadow: 0 5px 15px rgba(255, 157, 31, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.4); position: relative; border: 2px solid rgba(0, 0, 0, 0.2);">
+              <div
+                style="position: absolute; top: 3px; left: 5px; width: 6px; height: 6px; background: rgba(255, 255, 255, 0.7); border-radius: 50%; filter: blur(1px);">
+              </div>
+            </div>
+          </div>
+
+          <!-- Ligne 3 : 3 piquets -->
+          <div style="position: absolute; top: 70px; left: 50%; transform: translateX(-50%); display: flex; gap: 30px;">
+            <div
+              style="width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #ffc947 0%, #ff9d1f 100%); box-shadow: 0 5px 15px rgba(255, 157, 31, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.4); position: relative; border: 2px solid rgba(0, 0, 0, 0.2);">
+              <div
+                style="position: absolute; top: 3px; left: 5px; width: 6px; height: 6px; background: rgba(255, 255, 255, 0.7); border-radius: 50%; filter: blur(1px);">
+              </div>
+            </div>
+            <div
+              style="width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #ffc947 0%, #ff9d1f 100%); box-shadow: 0 5px 15px rgba(255, 157, 31, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.4); position: relative; border: 2px solid rgba(0, 0, 0, 0.2);">
+              <div
+                style="position: absolute; top: 3px; left: 5px; width: 6px; height: 6px; background: rgba(255, 255, 255, 0.7); border-radius: 50%; filter: blur(1px);">
+              </div>
+            </div>
+            <div
+              style="width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #ffc947 0%, #ff9d1f 100%); box-shadow: 0 5px 15px rgba(255, 157, 31, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.4); position: relative; border: 2px solid rgba(0, 0, 0, 0.2);">
+              <div
+                style="position: absolute; top: 3px; left: 5px; width: 6px; height: 6px; background: rgba(255, 255, 255, 0.7); border-radius: 50%; filter: blur(1px);">
+              </div>
+            </div>
+          </div>
+
+          <!-- Billes blanches sur les trajectoires -->
+
+          <!-- Bille haute droite -->
+          <div
+            style="position: absolute; top: 25px; right: 35px; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e8e8e8 50%, #c0c0c0 100%); box-shadow: 0 6px 18px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), inset 0 3px 8px rgba(255, 255, 255, 0.8); border: 2px solid rgba(255, 255, 255, 0.3);">
+            <div
+              style="position: absolute; top: 4px; left: 6px; width: 8px; height: 8px; background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent); border-radius: 50%; filter: blur(2px);">
+            </div>
+          </div>
+
+          <!-- Bille milieu droite -->
+          <div
+            style="position: absolute; top: 80px; right: 20px; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e8e8e8 50%, #c0c0c0 100%); box-shadow: 0 6px 18px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), inset 0 3px 8px rgba(255, 255, 255, 0.8); border: 2px solid rgba(255, 255, 255, 0.3);">
+            <div
+              style="position: absolute; top: 4px; left: 6px; width: 8px; height: 8px; background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent); border-radius: 50%; filter: blur(2px);">
+            </div>
+          </div>
+
+          <!-- Bille bas gauche -->
+          <div
+            style="position: absolute; bottom: 10px; left: 10px; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffffff 0%, #e8e8e8 50%, #c0c0c0 100%); box-shadow: 0 6px 18px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.3), inset 0 -3px 6px rgba(0, 0, 0, 0.2), inset 0 3px 8px rgba(255, 255, 255, 0.8); border: 2px solid rgba(255, 255, 255, 0.3);">
+            <div
+              style="position: absolute; top: 4px; left: 6px; width: 8px; height: 8px; background: radial-gradient(circle, rgba(255, 255, 255, 1), transparent); border-radius: 50%; filter: blur(2px);">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="table-card__info">
+        <h3 class="table-card__title">Plinko</h3>
+        <p class="table-card__desc">Plinko est un jeu où une bille tombe à travers un trou rempli de pique et
+          finit dans une case qui détermine ton gain !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⚡ Rapide</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button js-open-table-plinko" style="flex: 1;">
+            Rejoindre
+          </button>
+
+          <button class="table-card__help-btn js-open-help" data-game="plinko" aria-label="Aide Plinko">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- ========================================
+         JEUX 6 : DEMINEUR
+    ======================================== -->
+    <div class="table-card js-open-demineur" data-table-name="Jeu Demineur" data-min-bet="100" tabindex="0"
+      role="button">
+      <div class="table-card__image"
+        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+
+        <!-- Conteneur de la grille -->
+        <div
+          style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 12px; padding: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+
+          <!-- Grille 4x4 -->
+          <div
+            style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: 6px; width: 140px; height: 140px;">
+
+            <!-- Ligne 1 -->
+            <div
+              style="background: linear-gradient(145deg, #8b9dc3, #7489b0); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 3px 3px 6px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.3);">
+              🚩</div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #4CAF50; font-size: 18px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+              2</div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+            </div>
+            <div
+              style="background: linear-gradient(145deg, #8b9dc3, #7489b0); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 3px 3px 6px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.3);">
+              🚩</div>
+
+            <!-- Ligne 2 -->
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #2196F3; font-size: 18px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+              1</div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; box-shadow: 3px 3px 6px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.3);">
+            </div>
+            <div
+              style="background: linear-gradient(145deg, #8b9dc3, #7489b0); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 3px 3px 6px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.3);">
+              🚩</div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #ff2222; font-size: 18px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+              3</div>
+
+            <!-- Ligne 3 -->
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; box-shadow: 3px 3px 6px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.3);">
+            </div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+            </div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #4CAF50; font-size: 18px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+              2</div>
+            <div
+              style="background: linear-gradient(145deg, #8b9dc3, #7489b0); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 3px 3px 6px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.3);">
+              🚩</div>
+
+            <!-- Ligne 4 -->
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+            </div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; box-shadow: 3px 3px 6px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.3);">
+            </div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #2196F3; font-size: 18px; box-shadow: 2px 2px 4px rgba(0,0,0,0.15);">
+              1</div>
+            <div
+              style="background: linear-gradient(145deg, #e8eef5, #dce3ed); border-radius: 6px; box-shadow: 3px 3px 6px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.3);">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <div class="table-card__info">
+        <h3 class="table-card__title">Démineur</h3>
+        <p class="table-card__desc">Le Démineur est un jeu où tu révèles des cases en évitant les mines, en
+          t'aidant des chiffres qui indiquent celles proches !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⏲️​ Modéré</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button js-open-demineur" style="flex: 1;">Rejoindre</button>
+          <button class="table-card__help-btn js-open-help" data-game="demineur" aria-label="Aide Démineur">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========================================
+      JEUX 7 : Mines
+      ======================================== -->
+    <div class="table-card js-open-mastermind" data-table-name="Jeu Mastermind" data-min-bet="50" tabindex="0"
+      role="button">
+      <div class="table-card__image" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #312e81 100%);
+                  position: relative;
+                  overflow: hidden;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding: 20px;">
+        <!-- Effet de lumière en arrière-plan -->
+        <div
+          style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);">
+        </div>
+
+        <div style="display:flex;justify-content:center;align-items:center;">
+
+          <div style="
+display:grid;
+grid-template-columns:repeat(5,24px);
+gap:4px;
+padding:8px;
+border-radius:12px;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(6px);
+">
+
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#16a34a,#14532d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(34,197,94,0.6);
+font-size:12px;">💎</div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#ef4444,#7f1d1d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(255,0,0,0.5);
+font-size:11px;">💣</div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#16a34a,#14532d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(34,197,94,0.6);
+font-size:12px;">💎</div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#ef4444,#7f1d1d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(255,0,0,0.5);
+font-size:11px;">💣</div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#ef4444,#7f1d1d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(255,0,0,0.5);
+font-size:11px;">💣</div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#16a34a,#14532d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(34,197,94,0.6);
+font-size:12px;">💎</div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#16a34a,#14532d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(34,197,94,0.6);
+font-size:12px;">💎</div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#ef4444,#7f1d1d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(255,0,0,0.5);
+font-size:11px;">💣</div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#16a34a,#14532d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(34,197,94,0.6);
+font-size:12px;">💎</div>
+            <div
+              style="width:24px;height:24px;border-radius:7px;background:linear-gradient(145deg,#0f172a,#020617);box-shadow:inset 0 3px 4px rgba(255,255,255,0.05),0 0 0 1px rgba(255,255,255,0.06);">
+            </div>
+            <div style="
+width:24px;height:24px;border-radius:7px;
+background:linear-gradient(145deg,#ef4444,#7f1d1d);
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 0 8px rgba(255,0,0,0.5);
+font-size:11px;">💣</div>
+
+          </div>
+        </div>
+
+
+      </div>
+      <div class="table-card__info">
+        <h3 class="table-card__title">Mines</h3>
+        <p class="table-card__desc">Révèle des cases, évite les mines et augmente tes gains.</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⚡ Rapide</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button" style="flex: 1;">Rejoindre</button>
+          <button class="table-card__help-btn js-open-help" data-game="mastermind" aria-label="Aide Mastermind">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+              JEUX 8 : TAPE TAUPE
+          ======================================== -->
+    <div class="table-card js-open-table-tapetaupe" data-table-name="Jeu tape taupes" data-min-bet="100" tabindex="0"
+      role="button">
+      <div class="table-card__image"
+        style="background: linear-gradient(180deg, #f5a86e 0%, #e89450 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 20px;">
+
+        <!-- Effet de texture sol -->
+        <div
+          style="position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(180deg, transparent 0%, rgba(139, 90, 43, 0.2) 100%);">
+        </div>
+
+        <!-- Grille de jeu -->
+        <div style="position: relative; z-index: 1; width: 100%; max-width: 180px;">
+
+          <!-- Ligne 1 : 3 trous -->
+          <div style="display: flex; justify-content: space-between; margin-bottom: 12px; gap: 8px;">
+
+            <!-- Trou 1 - Taupe sortie -->
+            <div style="flex: 1; position: relative;">
+              <!-- Trou -->
+              <div
+                style="width: 100%; height: 35px; background: radial-gradient(ellipse at center, #3d2817 0%, #2a1a0f 70%, #1a0f08 100%); border-radius: 50%; box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.4); position: relative; overflow: visible;">
+
+                <!-- Taupe qui sort -->
+                <div
+                  style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 32px; height: 38px;">
+                  <!-- Corps taupe -->
+                  <div
+                    style="width: 32px; height: 28px; background: linear-gradient(180deg, #4a4a4a 0%, #2d2d2d 100%); border-radius: 50% 50% 40% 40%; position: relative; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);">
+
+                    <!-- Yeux -->
+                    <div
+                      style="position: absolute; top: 8px; left: 8px; width: 5px; height: 5px; background: #fff; border-radius: 50%; box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);">
+                    </div>
+                    <div
+                      style="position: absolute; top: 8px; right: 8px; width: 5px; height: 5px; background: #fff; border-radius: 50%; box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);">
+                    </div>
+
+                    <!-- Museau/nez -->
+                    <div
+                      style="position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); width: 12px; height: 8px; background: linear-gradient(180deg, #8b5a3c 0%, #6b4423 100%); border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.3);">
+                      <!-- Nez noir -->
+                      <div
+                        style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 5px; height: 4px; background: #1a1a1a; border-radius: 50% 50% 60% 60%;">
+                      </div>
+                    </div>
+
+                    <!-- Dents -->
+                    <div
+                      style="position: absolute; bottom: 2px; left: 6px; width: 3px; height: 5px; background: #fff; border-radius: 1px; transform: rotate(-10deg);">
+                    </div>
+                    <div
+                      style="position: absolute; bottom: 2px; right: 6px; width: 3px; height: 5px; background: #fff; border-radius: 1px; transform: rotate(10deg);">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Trou 2 - Vide -->
+            <div style="flex: 1;">
+              <div
+                style="width: 100%; height: 35px; background: radial-gradient(ellipse at center, #3d2817 0%, #2a1a0f 70%, #1a0f08 100%); border-radius: 50%; box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.4);">
+              </div>
+            </div>
+
+            <!-- Trou 3 - Bombe AGRANDIE -->
+            <div style="flex: 1; position: relative;">
+              <div
+                style="width: 100%; height: 35px; background: radial-gradient(ellipse at center, #3d2817 0%, #2a1a0f 70%, #1a0f08 100%); border-radius: 50%; box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.4); position: relative; overflow: visible;">
+
+                <!-- Bombe qui sort - AGRANDIE -->
+                <div
+                  style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); width: 28px; height: 28px;">
+                  <!-- Corps bombe -->
+                  <div
+                    style="width: 28px; height: 28px; background: radial-gradient(circle at 35% 35%, #3a3a3a 0%, #1a1a1a 100%); border-radius: 50%; box-shadow: 0 5px 12px rgba(0, 0, 0, 0.7), inset 0 -3px 8px rgba(0, 0, 0, 0.5); position: relative;">
+                    <!-- Reflet -->
+                    <div
+                      style="position: absolute; top: 5px; left: 7px; width: 8px; height: 8px; background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent); border-radius: 50%;">
+                    </div>
+
+                    <!-- Mèche -->
+                    <div
+                      style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 3px; height: 10px; background: linear-gradient(180deg, #8b4513 0%, #654321 100%); border-radius: 1.5px;">
+                      <!-- Étincelle -->
+                      <div
+                        style="position: absolute; top: -4px; left: 50%; transform: translateX(-50%); width: 7px; height: 7px; background: radial-gradient(circle, #ff6b1a 0%, #ff4500 100%); border-radius: 50%; box-shadow: 0 0 8px #ff6b1a, 0 0 12px #ff4500; animation: spark-glow 0.8s ease-in-out infinite;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Ligne 2 : 2 trous décalés -->
+          <div style="display: flex; justify-content: center; gap: 30px;">
+
+            <!-- Trou 4 - Taupe sortie -->
+            <div style="width: 50px; position: relative;">
+              <div
+                style="width: 100%; height: 35px; background: radial-gradient(ellipse at center, #3d2817 0%, #2a1a0f 70%, #1a0f08 100%); border-radius: 50%; box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.4); position: relative; overflow: visible;">
+
+                <!-- Taupe qui sort -->
+                <div
+                  style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 32px; height: 38px;">
+                  <div
+                    style="width: 32px; height: 28px; background: linear-gradient(180deg, #4a4a4a 0%, #2d2d2d 100%); border-radius: 50% 50% 40% 40%; position: relative; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);">
+
+                    <div
+                      style="position: absolute; top: 8px; left: 8px; width: 5px; height: 5px; background: #fff; border-radius: 50%; box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);">
+                    </div>
+                    <div
+                      style="position: absolute; top: 8px; right: 8px; width: 5px; height: 5px; background: #fff; border-radius: 50%; box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);">
+                    </div>
+
+                    <div
+                      style="position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%); width: 12px; height: 8px; background: linear-gradient(180deg, #8b5a3c 0%, #6b4423 100%); border-radius: 50%; border: 1px solid rgba(0, 0, 0, 0.3);">
+                      <div
+                        style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 5px; height: 4px; background: #1a1a1a; border-radius: 50% 50% 60% 60%;">
+                      </div>
+                    </div>
+
+                    <div
+                      style="position: absolute; bottom: 2px; left: 6px; width: 3px; height: 5px; background: #fff; border-radius: 1px; transform: rotate(-10deg);">
+                    </div>
+                    <div
+                      style="position: absolute; bottom: 2px; right: 6px; width: 3px; height: 5px; background: #fff; border-radius: 1px; transform: rotate(10deg);">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Trou 5 - Vide -->
+            <div style="width: 50px;">
+              <div
+                style="width: 100%; height: 35px; background: radial-gradient(ellipse at center, #3d2817 0%, #2a1a0f 70%, #1a0f08 100%); border-radius: 50%; box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.4);">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="table-card__info">
+        <h3 class="table-card__title">Tape‑Taupes</h3>
+        <p class="table-card__desc">Un jeu où tu frappes des taupes pour gagner ou perdre des points, avec des
+          risques et bonus à chaque coup !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⌛ Long</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button" style="flex: 1;">Rejoindre</button>
+          <button class="table-card__duel-btn js-open-duel" data-jeu="tapetaupe" aria-label="Défier un joueur au Tape-Taupe">⚔️ Défier</button>
+          <button class="table-card__help-btn js-open-help" data-game="tapetaupe" aria-label="Aide tapetaupe">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+  JEUX : Hi-Low
+  ======================================== -->
+    <div class="table-card js-open-hilow" data-table-name="Jeu Hi-Low" data-min-bet="50" tabindex="0" role="button">
+      <div class="table-card__image" style="
+    background: #0f1f0f;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;">
+
+        <!-- Lueur verte en bas -->
+        <div
+          style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%, rgba(34,197,94,.18) 0%, transparent 70%);">
+        </div>
+
+        <!-- Illustration : carte révélée + carte dos + badges -->
+        <div style="position:relative;display:flex;gap:12px;align-items:center;">
+          <!-- Carte visible -->
+          <div
+            style="width:52px;height:72px;border-radius:7px;background:#f5f0e8;border:1.5px solid rgba(255,255,255,.15);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#1a1a1a;">
+            7<span style="font-size:.75rem;">♠</span>
+          </div>
+          <!-- Badges -->
+          <div style="display:flex;flex-direction:column;gap:6px;align-items:center;">
+            <span
+              style="padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;background:rgba(34,197,94,.2);color:#4ade80;border:1px solid rgba(34,197,94,.3);">▲
+              HIGHER</span>
+            <span
+              style="padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;background:rgba(59,130,246,.2);color:#60a5fa;border:1px solid rgba(59,130,246,.3);">▼
+              LOWER</span>
+          </div>
+          <!-- Carte cachée -->
+          <div
+            style="width:52px;height:72px;border-radius:7px;background:#1a3a1a;border:1.5px solid rgba(255,255,255,.1);position:relative;">
+            <div style="position:absolute;inset:4px;border:1px solid rgba(255,255,255,.12);border-radius:4px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-card__info">
+        <h3 class="table-card__title">Hi-Low</h3>
+        <p class="table-card__desc">Pariez si la prochaine carte sera plus haute, plus basse ou égale. Encaissez avant
+          de perdre !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⚡ Rapide</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button" style="flex: 1;">Rejoindre</button>
+          <button class="table-card__help-btn js-open-help" data-game="hilow" aria-label="Aide Hi-Low">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-card js-open-roulette" data-table-name="Jeu Roulette" data-min-bet="10" tabindex="0"
+      role="button">
+      <div class="table-card__image" style="background: linear-gradient(145deg, #0d0d0d 0%, #1a0500 40%, #2d0a00 70%, #0a0a0a 100%);
+           position: relative; overflow: hidden;
+           display: flex; align-items: center; justify-content: center; padding: 20px;
+           min-height: 200px;">
+
+        <!-- Particules -->
+        <div style="position:absolute;inset:0;overflow:hidden;pointer-events:none;">
+          <div
+            style="position:absolute;width:2px;height:2px;background:#ffd700;border-radius:50%;top:15%;left:10%;opacity:0.6;box-shadow:0 0 4px #ffd700;">
+          </div>
+          <div
+            style="position:absolute;width:1px;height:1px;background:#ffd700;border-radius:50%;top:30%;left:88%;opacity:0.4;">
+          </div>
+          <div
+            style="position:absolute;width:2px;height:2px;background:#ffd700;border-radius:50%;top:80%;left:85%;opacity:0.5;box-shadow:0 0 4px #ffd700;">
+          </div>
+        </div>
+
+        <!-- Roue SVG -->
+        <div style="position:relative;z-index:2;width:160px;height:160px;flex-shrink:0;">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:160px;height:160px;display:block;">
+            <defs>
+              <radialGradient id="hubG" cx="40%" cy="35%" r="65%">
+                <stop offset="0%" style="stop-color:#7a4500" />
+                <stop offset="55%" style="stop-color:#3d2200" />
+                <stop offset="100%" style="stop-color:#1a0800" />
+              </radialGradient>
+              <linearGradient id="goldG" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#ffd700" />
+                <stop offset="50%" style="stop-color:#c9a227" />
+                <stop offset="100%" style="stop-color:#ffd700" />
+              </linearGradient>
+              <clipPath id="outerClip">
+                <circle cx="100" cy="100" r="96" />
+              </clipPath>
+              <clipPath id="innerClip">
+                <circle cx="100" cy="100" r="60" />
+              </clipPath>
+            </defs>
+
+            <!-- Fond de base -->
+            <circle cx="100" cy="100" r="99" fill="#1a0800" />
+
+            <!-- 
+          SEGMENTS : on utilise stroke-dasharray sur un cercle
+          Circonférence pour r=78 : 2*PI*78 = 490.1
+          Chaque segment = 490.1/37 = 13.246
+          On alterne rouge/noir avec 1 vert
+          On utilise une technique plus fiable : des paths en anneau
+        -->
+
+            <!-- TECHNIQUE : cercle avec stroke large qui forme un anneau coloré -->
+            <!-- r=78 => zone des segments, stroke-width=36 => de r=60 à r=96 -->
+            <!-- Circonférence = 490.09 -->
+            <!-- Chaque segment = 13.246 unités sur la circonférence -->
+
+            <g clip-path="url(#outerClip)" style="transform:rotate(-90deg);transform-origin:100px 100px;">
+              <!-- Vert 0 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#16a34a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="0" />
+              <!-- Rouge 32 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-13.2" />
+              <!-- Noir 15 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-26.4" />
+              <!-- Rouge 19 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-39.6" />
+              <!-- Noir 4 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-52.8" />
+              <!-- Rouge 21 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-66.1" />
+              <!-- Noir 2 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-79.3" />
+              <!-- Rouge 25 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-92.5" />
+              <!-- Noir 17 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-105.7" />
+              <!-- Rouge 34 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-118.9" />
+              <!-- Noir 6 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-132.1" />
+              <!-- Rouge 27 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-145.4" />
+              <!-- Noir 13 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-158.6" />
+              <!-- Rouge 36 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-171.8" />
+              <!-- Noir 11 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-185.0" />
+              <!-- Rouge 30 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-198.2" />
+              <!-- Noir 8 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-211.5" />
+              <!-- Rouge 23 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-224.7" />
+              <!-- Noir 10 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-237.9" />
+              <!-- Rouge 5 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-251.1" />
+              <!-- Noir 24 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-264.3" />
+              <!-- Rouge 16 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-277.6" />
+              <!-- Noir 33 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-290.8" />
+              <!-- Rouge 1 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-304.0" />
+              <!-- Noir 20 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-317.2" />
+              <!-- Rouge 14 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-330.4" />
+              <!-- Noir 31 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-343.7" />
+              <!-- Rouge 9 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-356.9" />
+              <!-- Noir 22 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-370.1" />
+              <!-- Rouge 18 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-383.3" />
+              <!-- Noir 29 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-396.5" />
+              <!-- Rouge 7 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-409.8" />
+              <!-- Noir 28 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-423.0" />
+              <!-- Rouge 12 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-436.2" />
+              <!-- Noir 35 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-449.4" />
+              <!-- Rouge 3 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#c0392b" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-462.6" />
+              <!-- Noir 26 -->
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#1a1a1a" stroke-width="36"
+                stroke-dasharray="13.2 476.8" stroke-dashoffset="-475.9" />
+            </g>
+
+            <!-- Séparateurs fins entre segments -->
+            <g clip-path="url(#outerClip)" style="transform:rotate(-90deg);transform-origin:100px 100px;">
+              <circle cx="100" cy="100" r="78" fill="none" stroke="#000" stroke-width="37" stroke-dasharray="0.5 12.7"
+                stroke-dashoffset="0" opacity="0.8" />
+            </g>
+
+            <!-- Anneau bois extérieur -->
+            <circle cx="100" cy="100" r="99" fill="none" stroke="#2a1000" stroke-width="5" />
+            <circle cx="100" cy="100" r="97" fill="none" stroke="url(#goldG)" stroke-width="3.5" />
+            <circle cx="100" cy="100" r="95.5" fill="none" stroke="rgba(255,215,0,0.25)" stroke-width="0.8" />
+
+            <!-- Zone intérieure sombre (piste de bille) -->
+            <circle cx="100" cy="100" r="59" fill="#080200" />
+            <circle cx="100" cy="100" r="59" fill="none" stroke="url(#goldG)" stroke-width="2" />
+            <circle cx="100" cy="100" r="56" fill="none" stroke="rgba(255,215,0,0.35)" stroke-width="0.7"
+              stroke-dasharray="3,6" />
+
+            <!-- 8 bras -->
+            <g stroke="url(#goldG)" stroke-width="1.5" opacity="0.85" stroke-linecap="round">
+              <line x1="100" y1="56" x2="100" y2="40" />
+              <line x1="100" y1="144" x2="100" y2="160" />
+              <line x1="56" y1="100" x2="40" y2="100" />
+              <line x1="144" y1="100" x2="160" y2="100" />
+              <line x1="77" y1="77" x2="65" y2="65" />
+              <line x1="123" y1="77" x2="135" y2="65" />
+              <line x1="77" y1="123" x2="65" y2="135" />
+              <line x1="123" y1="123" x2="135" y2="135" />
+            </g>
+
+            <!-- Hub central -->
+            <circle cx="100" cy="100" r="28" fill="#0d0500" stroke="url(#goldG)" stroke-width="2" />
+            <circle cx="100" cy="100" r="25" fill="url(#hubG)" />
+            <circle cx="100" cy="100" r="21" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="0.8" />
+            <circle cx="100" cy="100" r="11" fill="#1a0800" stroke="url(#goldG)" stroke-width="1.8" />
+            <circle cx="100" cy="100" r="8.5" fill="#c9a227" />
+            <circle cx="100" cy="100" r="6.5" fill="#a07000" />
+            <circle cx="100" cy="100" r="4" fill="#ffd700" />
+            <circle cx="100" cy="100" r="1.8" fill="#fff8dc" />
+            <ellipse cx="96.5" cy="96.5" rx="3.5" ry="2" fill="rgba(255,255,255,0.45)" style="filter:blur(0.6px);" />
+
+            <!-- Pointeur doré -->
+            <polygon points="100,3 94,15 106,15" fill="url(#goldG)"
+              style="filter:drop-shadow(0 0 5px rgba(255,215,0,0.95));" />
+          </svg>
+
+          <!-- Bille -->
+          <div style="position:absolute;top:5px;left:50%;transform:translateX(-50%);
+                  width:10px;height:10px;border-radius:50%;
+                  background:radial-gradient(circle at 30% 30%, #ffffff 0%, #cccccc 55%, #999 100%);
+                  box-shadow:0 0 8px rgba(255,255,255,0.95),0 2px 8px rgba(0,0,0,0.8);
+                  z-index:3;pointer-events:none;"></div>
+        </div>
+
+        <!-- Fiches -->
+        <div style="position:absolute;bottom:10px;display:flex;gap:8px;z-index:3;align-items:center;">
+          <!-- 10 - Bleue (bordure jaune) -->
+          <div style="width:28px;height:28px;border-radius:50%;
+            background:linear-gradient(135deg,#3b82f6,#1d4ed8);
+            border:2px solid #ffd700;
+            box-shadow:0 4px 10px rgba(59,130,246,0.5),0 0 8px rgba(255,215,0,0.5);
+            font-size:8px;display:flex;align-items:center;justify-content:center;
+            color:#fff;font-weight:900;">10</div>
+
+          <!-- 25 - Verte -->
+          <div style="width:28px;height:28px;border-radius:50%;
+            background:linear-gradient(135deg,#22c55e,#15803d);
+            border:2px solid rgba(255,255,255,0.6);
+            box-shadow:0 4px 10px rgba(34,197,94,0.5);
+            font-size:8px;display:flex;align-items:center;justify-content:center;
+            color:#fff;font-weight:900;">25</div>
+
+          <!-- 50 - Rouge -->
+          <div style="width:28px;height:28px;border-radius:50%;
+            background:linear-gradient(135deg,#ef4444,#b91c1c);
+            border:2px solid rgba(255,255,255,0.6);
+            box-shadow:0 4px 10px rgba(239,68,68,0.5);
+            font-size:8px;display:flex;align-items:center;justify-content:center;
+            color:#fff;font-weight:900;">50</div>
+
+          <!-- 100 - Violette -->
+          <div style="width:28px;height:28px;border-radius:50%;
+            background:linear-gradient(135deg,#a855f7,#7e22ce);
+            border:2px solid rgba(255,255,255,0.6);
+            box-shadow:0 4px 10px rgba(168,85,247,0.5);
+            font-size:8px;display:flex;align-items:center;justify-content:center;
+            color:#fff;font-weight:900;">100</div>
+
+          <!-- 200 - Orange -->
+          <div style="width:28px;height:28px;border-radius:50%;
+            background:linear-gradient(135deg,#f97316,#c2410c);
+            border:2px solid rgba(255,255,255,0.6);
+            box-shadow:0 4px 10px rgba(249,115,22,0.5);
+            font-size:8px;display:flex;align-items:center;justify-content:center;
+            color:#fff;font-weight:900;">200</div>
+
+          <!-- 500 - Or -->
+          <div style="width:28px;height:28px;border-radius:50%;
+            background:linear-gradient(135deg,#eab308,#92400e);
+            border:2px solid rgba(255,255,255,0.6);
+            box-shadow:0 4px 10px rgba(234,179,8,0.5);
+            font-size:7px;display:flex;align-items:center;justify-content:center;
+            color:#fff;font-weight:900;">500</div>
+
+        </div>
+
+        <!-- Vignette + bordure -->
+        <div style="position:absolute;inset:0;
+                box-shadow:inset 0 0 55px rgba(0,0,0,0.65);
+                pointer-events:none;border-radius:inherit;"></div>
+        <div style="position:absolute;inset:0;
+                border:1px solid rgba(255,215,0,0.18);
+                border-radius:inherit;pointer-events:none;"></div>
+      </div>
+
+      <div class="table-card__info">
+        <h3 class="table-card__title">Roulette</h3>
+        <p class="table-card__desc">Misez sur des numéros, des couleurs ou des douzaines et laissez la roue décider de
+          votre fortune !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⚡ Rapide</span>
+        </div>
+        <div class="table-card__bet" style="display:flex;align-items:center;gap:0.75rem;">
+          <button class="table-card__button js-open-roulette" style="flex:1;">Rejoindre</button>
+          <button class="table-card__help-btn js-open-help" data-game="roulette" aria-label="Aide Roulette">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- ========================================
+  JEUX : Scratch & Win
+  ======================================== -->
+    <div class="table-card js-open-scratch" data-table-name="Scratch & Win" data-min-bet="50" tabindex="0"
+      role="button">
+      <div class="table-card__image" style="
+    background: #1a0f2e;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;">
+
+        <!-- Lueur dorée en bas -->
+        <div
+          style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%, rgba(255,215,0,.2) 0%, transparent 70%);">
+        </div>
+
+        <!-- Paillettes / confettis décoratifs -->
+        <div style="position:absolute;top:10px;left:15px;font-size:0.9rem;opacity:0.4;">✨</div>
+        <div style="position:absolute;top:14px;right:18px;font-size:0.8rem;opacity:0.35;">💫</div>
+        <div style="position:absolute;bottom:14px;left:22px;font-size:0.75rem;opacity:0.3;">⭐</div>
+
+        <!-- Illustration : grille 3×3 mini -->
+        <div style="position:relative;display:flex;flex-direction:column;gap:6px;align-items:center;">
+
+          <!-- Rangée 1 -->
+          <div style="display:flex;gap:6px;">
+            <!-- Carte grattée gagnante -->
+            <div
+              style="width:40px;height:40px;border-radius:7px;background:linear-gradient(135deg,#1a1a3a,#0f0f2e);border:1.5px solid rgba(255,215,0,0.5);display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 10px rgba(255,215,0,0.3);">
+              💎</div>
+            <!-- Carte avec couche -->
+            <div
+              style="width:40px;height:40px;border-radius:7px;background:linear-gradient(135deg,#2a2a4a,#1a1a3a);border:1.5px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-size:1rem;color:rgba(255,255,255,0.2);">
+              🪙</div>
+            <!-- Carte grattée gagnante -->
+            <div
+              style="width:40px;height:40px;border-radius:7px;background:linear-gradient(135deg,#1a1a3a,#0f0f2e);border:1.5px solid rgba(255,215,0,0.5);display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 0 10px rgba(255,215,0,0.3);">
+              💎</div>
+          </div>
+
+          <!-- Badge WIN -->
+          <div
+            style="padding:3px 10px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:0.08em;background:rgba(255,215,0,.15);color:#ffd700;border:1px solid rgba(255,215,0,.35);">
+            × 10 JACKPOT
+          </div>
+
+        </div>
+      </div>
+
+      <div class="table-card__info">
+        <h3 class="table-card__title">Scratch & Win</h3>
+        <p class="table-card__desc">Grattez 9 cases et trouvez 3 symboles identiques pour multiplier votre mise. Jackpot
+          ×10 !</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">⚡ Très rapide</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button" style="flex: 1;">Jouer</button>
+          <button class="table-card__help-btn js-open-help" data-game="scratch" aria-label="Aide Scratch">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+              JEUX 9 : COMING SOON
+          ======================================== -->
+    <!-- <div class="table-card" style="cursor: default; opacity: 0.85;" tabindex="0">
+      <div class="table-card__image"
+        style="background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 20px;"> -->
+
+        <!-- Effet de particules / étoiles -->
+        <!-- <div style="position: absolute; inset: 0; overflow: hidden;">
+          <div
+            style="position: absolute; top: 15%; left: 20%; width: 3px; height: 3px; background: #fff; border-radius: 50%; opacity: 0.6; animation: spark-glow 1.2s ease-in-out infinite;">
+          </div>
+          <div
+            style="position: absolute; top: 30%; left: 75%; width: 2px; height: 2px; background: #a78bfa; border-radius: 50%; opacity: 0.7; animation: spark-glow 1.8s ease-in-out infinite;">
+          </div>
+          <div
+            style="position: absolute; top: 65%; left: 15%; width: 2px; height: 2px; background: #60a5fa; border-radius: 50%; opacity: 0.5; animation: spark-glow 2.2s ease-in-out infinite;">
+          </div>
+          <div
+            style="position: absolute; top: 75%; left: 80%; width: 3px; height: 3px; background: #fff; border-radius: 50%; opacity: 0.4; animation: spark-glow 1.5s ease-in-out infinite;">
+          </div>
+          <div
+            style="position: absolute; top: 50%; left: 50%; width: 2px; height: 2px; background: #f9a8d4; border-radius: 50%; opacity: 0.6; animation: spark-glow 2s ease-in-out infinite;">
+          </div>
+          <div
+            style="position: absolute; top: 20%; left: 50%; width: 2px; height: 2px; background: #a78bfa; border-radius: 50%; opacity: 0.5; animation: spark-glow 2.5s ease-in-out infinite;">
+          </div>
+          <div
+            style="position: absolute; top: 80%; left: 45%; width: 3px; height: 3px; background: #60a5fa; border-radius: 50%; opacity: 0.4; animation: spark-glow 1.7s ease-in-out infinite;">
+          </div>
+        </div> -->
+
+        <!-- Cercle flou derrière le ? -->
+        <!-- <div
+          style="position: absolute; width: 110px; height: 110px; background: radial-gradient(circle, rgba(167, 139, 250, 0.15) 0%, transparent 70%); border-radius: 50%; animation: spark-glow 2s ease-in-out infinite;">
+        </div> -->
+
+        <!-- Cercle bordure animé -->
+        <!-- <div
+          style="position: relative; z-index: 1; width: 90px; height: 90px; border-radius: 50%; border: 2px solid rgba(167, 139, 250, 0.4); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(167, 139, 250, 0.2), inset 0 0 20px rgba(167, 139, 250, 0.05);"> -->
+
+          <!-- Point d'interrogation -->
+          <!-- <span
+            style="font-size: 52px; font-weight: 900; background: linear-gradient(180deg, #c4b5fd 0%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.6)); line-height: 1; user-select: none;">?</span>
+
+        </div>
+
+      </div>
+
+      <div class="table-card__info">
+        <h3 class="table-card__title" style="display: flex; align-items: center; gap: 8px;">
+          Mystère -->
+          <!-- Badge "À venir" -->
+          <!-- <span
+            style="font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: linear-gradient(135deg, #7c3aed, #a78bfa); color: #fff; padding: 2px 8px; border-radius: 20px; white-space: nowrap; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.4);">À
+            venir</span>
+        </h3>
+        <p class="table-card__desc">Un nouveau jeu arrive bientôt… <br> Reste à l'affût !!</p>
+        <div class="table-card__stats">
+          <span class="table-card__stat">🔒 Bientôt disponible</span>
+        </div>
+        <div class="table-card__bet" style="display: flex; align-items: center; gap: 0.75rem;">
+          <button class="table-card__button" style="flex: 1; opacity: 0.5; cursor: not-allowed;"
+            disabled>Bientôt...</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      @keyframes spark-glow {
+
+        0%,
+        100% {
+          box-shadow: 0 0 8px #ff6b1a, 0 0 12px #ff4500;
+          transform: scale(1);
+        }
+
+        50% {
+          box-shadow: 0 0 14px #ff6b1a, 0 0 22px #ff4500;
+          transform: scale(1.2);
+        }
+      }
+    </style> -->

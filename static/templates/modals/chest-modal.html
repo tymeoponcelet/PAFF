@@ -1,0 +1,94 @@
+<div class="chest-overlay" id="chestOverlay">
+  <div class="chest-modal" id="chestModal">
+    <!-- HEADER -->
+    <div class="chest-header">
+      <div class="chest-header__left">
+        <div class="chest-header__badge">Cyber Chest</div>
+        <div class="chest-header__title">⚡ OUVRIR LE COFFRE</div>
+      </div>
+      <button class="chest-header__close" id="chestClose">×</button>
+    </div>
+
+    <!-- KEYS -->
+    <div class="chest-keys-bar">
+      <span class="chest-keys-bar__key">🗝️</span>
+      <span>Clés disponibles :</span>
+      <span class="chest-keys-bar__count" id="chestKeysCount">3</span>
+      <span style="flex: 1"></span>
+      <span style="font-size: 0.72rem; color: #374151"
+        >Misez 50+ pts pour en gagner</span
+      >
+    </div>
+
+    <!-- ROULETTE -->
+    <div class="roulette-area" id="rouletteArea">
+      <div class="roulette-label">— faites défiler —</div>
+
+      <!-- Track 1 (toujours visible) -->
+      <div class="roulette-wrapper" id="rouletteWrapper1">
+        <div class="roulette-indicator"></div>
+        <div class="roulette-track" id="rouletteTrack1"></div>
+      </div>
+      <!-- Track 2 (visible si 2x ou 3x) -->
+      <div
+        class="roulette-wrapper roulette-wrapper--hidden"
+        id="rouletteWrapper2"
+      >
+        <div class="roulette-indicator"></div>
+        <div class="roulette-track" id="rouletteTrack2"></div>
+      </div>
+      <!-- Track 3 (visible si 3x) -->
+      <div
+        class="roulette-wrapper roulette-wrapper--hidden"
+        id="rouletteWrapper3"
+      >
+        <div class="roulette-indicator"></div>
+        <div class="roulette-track" id="rouletteTrack3"></div>
+      </div>
+
+      <!-- Popup résultat multi -->
+      <div class="roulette-result-popup" id="resultPopup">
+        <div class="roulette-result-popup__backdrop"></div>
+        <div class="roulette-result-popup__card" id="resultCard">
+          <!-- Rempli dynamiquement par chest-roulette.js -->
+          <div class="popup-multi" id="popupMulti"></div>
+          <div class="popup-total" id="popupTotal"></div>
+          <div class="popup-replay">
+            <button class="popup-replay__btn" id="replayBtn">↻ Rejouer</button>
+            <div class="popup-replay__keys">
+              Clés : <span id="replayKeysCount">2</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="chest-footer">
+      <!-- Sélecteur de quantité -->
+      <div class="chest-qty-selector" id="chestQtySelector">
+        <button class="chest-qty-btn is-active" data-qty="1">1×</button>
+        <button class="chest-qty-btn" data-qty="2">2×</button>
+        <button class="chest-qty-btn" data-qty="3">3×</button>
+      </div>
+
+      <button class="chest-open-btn" id="chestOpenBtn">
+        <span>🔓</span>
+        <span>Ouvrir le coffre</span>
+        <span class="chest-open-btn__cost" id="chestOpenCost">1 clé</span>
+      </button>
+
+      <div class="chest-tiers">
+        <div class="chest-tier chest-tier--common">⬜ 50–140</div>
+        <div class="chest-tier chest-tier--rare">🔷 150–290</div>
+        <div class="chest-tier chest-tier--epic">🟣 300–440</div>
+        <div class="chest-tier chest-tier--legendary">⭐ 450–500</div>
+        <div class="chest-tier chest-tier--mythic">☣️ 3000</div>
+      </div>
+      <div class="chest-no-keys" id="chestNoKeys">
+        Pas de clé ? Jouez avec des mises de <strong>100+ pts</strong>.
+      </div>
+    </div>
+  </div>
+</div>
+

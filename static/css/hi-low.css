@@ -1,0 +1,265 @@
+/* =============================================
+   HI-LOW — Styles
+   À ajouter à votre CSS existant
+   Hérite des composants .card, .blackjack__btn,
+   .blackjack__bet-area, .modal déjà définis.
+   ============================================= */
+
+/* Table de jeu */
+.hilow__table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.hilow__card-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 100px;
+}
+
+.hilow__card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted, #888);
+  font-weight: 600;
+}
+
+.hilow__card-area {
+  width: 90px;
+  height: 126px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Placeholder "?" avant la distribution */
+.hilow__card-placeholder {
+  width: 80px;
+  height: 112px;
+  border: 2px dashed var(--color-border, rgba(255,255,255,0.2));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--color-text-muted, #888);
+  background: var(--color-surface, rgba(255,255,255,0.05));
+  transition: border-color 0.3s;
+}
+
+/* Indicateur VS central */
+.hilow__vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.hilow__vs-icon {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-muted, #888);
+  letter-spacing: 0.05em;
+  transition: transform 0.3s, color 0.3s;
+}
+
+/* Stats streak et gain */
+.hilow__stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 0.75rem 0;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-surface, rgba(255,255,255,0.04));
+  border-radius: 12px;
+  border: 1px solid var(--color-border, rgba(255,255,255,0.08));
+}
+
+.hilow__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.hilow__stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted, #888);
+  font-weight: 600;
+}
+
+.hilow__streak-value,
+.hilow__gain-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-text-muted, #888);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.hilow__streak-value--active {
+  color: #f59e0b;
+  animation: hilow-pulse 0.4s ease;
+}
+
+.hilow__gain-value--active {
+  color: #22c55e;
+  animation: hilow-pulse 0.4s ease;
+}
+
+@keyframes hilow-pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Message de statut */
+.hilow__status {
+  text-align: center;
+  font-size: 0.9rem;
+  min-height: 1.5em;
+  color: var(--color-text, #ddd);
+  margin: 0.5rem 0;
+  transition: color 0.3s;
+}
+
+/* Règles */
+.hilow__rules {
+  font-size: 0.82rem;
+  color: var(--color-text-muted, #888);
+  text-align: center;
+  line-height: 1.5;
+  margin: 0.5rem 0 1rem;
+}
+
+/* Boutons de devinette */
+.hilow__guess-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0.75rem 0;
+}
+
+/* Bouton Plus basse */
+.hilow__btn--lower {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+  color: white !important;
+  border: none !important;
+  min-width: 130px;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.hilow__btn--lower:hover:not(:disabled) {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Bouton Égale */
+.hilow__btn--equal {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9) !important;
+  color: white !important;
+  border: none !important;
+  min-width: 130px;
+  position: relative;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.hilow__btn--equal:hover:not(:disabled) {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.hilow__odds-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.25);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Bouton Plus haute */
+.hilow__btn--higher {
+  background: linear-gradient(135deg, #22c55e, #15803d) !important;
+  color: white !important;
+  border: none !important;
+  min-width: 130px;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.hilow__btn--higher:hover:not(:disabled) {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Bouton encaisser */
+.hilow__cashout-area {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+}
+
+.hilow__btn--cashout {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  min-width: 180px;
+  animation: hilow-glow 1.5s ease-in-out infinite alternate;
+  transition: transform 0.15s;
+}
+
+.hilow__btn--cashout:hover:not(:disabled) {
+  transform: scale(1.04);
+}
+
+@keyframes hilow-glow {
+  from { box-shadow: 0 0 8px rgba(245, 158, 11, 0.4); }
+  to   { box-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
+}
+
+/* Carte correct / wrong */
+.card--correct .card__face--front {
+  outline: 3px solid #22c55e;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.card--wrong .card__face--front {
+  outline: 3px solid #ef4444;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .hilow__table {
+    gap: 0.75rem;
+  }
+
+  .hilow__card-area {
+    width: 70px;
+    height: 98px;
+  }
+
+  .hilow__stats {
+    gap: 1.5rem;
+  }
+
+  .hilow__guess-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
